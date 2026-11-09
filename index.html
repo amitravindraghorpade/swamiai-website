@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swami Intelligent Systems | AI Smart Ward</title>
+<meta name="description" content="AI Smart Ward turns a city's existing CCTV cameras into civic intelligence — detecting potholes, water leaks, fallen trees, garbage dumping and accidents, and tracking every incident from alert to closure.">
+<meta property="og:title" content="Swami Intelligent Systems | AI Smart Ward">
+<meta property="og:description" content="From CCTV cameras to civic intelligence. AI video analytics for smart governance, built on the cameras cities already own.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://swamiai.in/">
+<meta name="theme-color" content="#0A1020">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1020'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23F5A524'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A1020; --bg2:#0F172B; --card:#131C33; --line:#22304F;
+  --text:#E8ECF5; --muted:#9AA6BF; --amber:#F5A524; --amber-soft:rgba(245,165,36,.12);
+  --teal:#2DD4BF; --red:#F0616D; --radius:14px;
+  --serif:"Fraunces",Georgia,serif; --sans:"DM Sans","Noto Sans Devanagari",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.lead{color:var(--muted);font-size:1.08rem;max-width:640px}
+section{padding:96px 0}
+.sec-head{margin-bottom:48px}
+.sec-head h2{margin:10px 0 14px}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(10,16,32,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.brand-mark{width:34px;height:34px;border-radius:9px;background:var(--amber);color:var(--bg);display:grid;place-items:center;font-family:var(--serif);font-size:1.25rem}
+.brand small{display:block;font-weight:400;font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+.links{display:flex;gap:28px;font-size:.94rem;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:700;font-size:.95rem;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--amber);color:#1A1203}
+.btn-primary:hover{background:#FFB84A}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--muted)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
+
+/* hero */
+.hero{padding:80px 0 96px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 85% 20%,rgba(245,165,36,.10),transparent 70%),
+  radial-gradient(500px 400px at 10% 90%,rgba(45,212,191,.07),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative}
+.hero h1{font-size:clamp(2.3rem,5vw,3.6rem);margin:16px 0 18px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.marathi{font-family:"Noto Sans Devanagari",var(--sans);color:var(--teal);font-size:1.02rem;margin-bottom:14px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.trust{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:.86rem;color:var(--muted)}
+.trust span::before{content:"✓ ";color:var(--teal);font-weight:700}
+
+/* camera feed mock */
+.feed{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.feed-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--muted);padding:2px 4px 10px}
+.rec{color:var(--red)}
+.rec::before{content:"● ";animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.2}}
+.screen{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#1B2440 0%,#121A30 55%,#2A2F38 55%,#23272F 100%)}
+.screen .road{position:absolute;left:50%;bottom:0;width:120%;height:45%;transform:translateX(-50%);background:linear-gradient(90deg,transparent 0 8%,#353A44 8% 92%,transparent 92%);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%)}
+.screen .lane{position:absolute;left:50%;bottom:0;width:4px;height:45%;transform:translateX(-50%);background:repeating-linear-gradient(180deg,#C9CED8 0 14px,transparent 14px 30px);opacity:.55}
+.screen .bldg{position:absolute;bottom:45%;background:#1F2A47;border-top:2px solid #2A375A}
+.screen .pothole{position:absolute;left:52%;bottom:14%;width:16%;height:9%;border-radius:50%;background:#15181E}
+.bbox{position:absolute;border:2px solid var(--amber);border-radius:4px;animation:pulse 2.4s infinite}
+.bbox label{position:absolute;top:-24px;left:-2px;background:var(--amber);color:#1A1203;font-family:var(--mono);font-size:.66rem;font-weight:500;padding:3px 7px;border-radius:4px 4px 4px 0;white-space:nowrap}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,165,36,.45)}50%{box-shadow:0 0 0 6px rgba(245,165,36,0)}}
+.alerts{margin-top:12px;display:grid;gap:8px}
+.alert{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.84rem}
+.alert b{font-weight:500}
+.tag{font-family:var(--mono);font-size:.66rem;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.tag.high{background:rgba(240,97,109,.15);color:var(--red)}
+.tag.med{background:var(--amber-soft);color:var(--amber)}
+.tag.ok{background:rgba(45,212,191,.13);color:var(--teal)}
+
+/* problem */
+.problem{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.quote{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.35;border-left:3px solid var(--amber);padding-left:24px}
+.quote small{display:block;font-family:var(--sans);font-size:.92rem;color:var(--muted);margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:.88rem;color:var(--muted)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;position:relative;counter-increment:s}
+.step::before{content:"0" counter(s);font-family:var(--mono);font-size:.72rem;color:var(--amber)}
+.step h3{font-family:var(--sans);font-size:.98rem;margin:8px 0 6px}
+.step p{font-size:.82rem;color:var(--muted);line-height:1.45}
+.note{margin-top:26px;font-size:.95rem;color:var(--muted)}
+.note strong{color:var(--text)}
+
+/* capabilities */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:border-color .2s}
+.card:hover{border-color:#3A4C78}
+.icon{width:42px;height:42px;border-radius:10px;background:var(--amber-soft);display:grid;place-items:center;margin-bottom:16px}
+.icon svg{width:22px;height:22px;stroke:var(--amber);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-family:var(--sans);font-size:1.08rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.93rem}
+.card .dept{margin-top:14px;font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.06em;text-transform:uppercase}
+
+/* dashboard */
+.dash{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px}
+.kpi{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi span{font-size:.74rem;color:var(--muted);display:block}
+.kpi b{font-family:var(--serif);font-size:1.6rem}
+.dash-body{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+.map{background:var(--bg2);border:1px solid var(--line);border-radius:10px;min-height:250px;position:relative;overflow:hidden;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px}
+.pin{position:absolute;width:12px;height:12px;border-radius:50%;border:2px solid var(--bg)}
+.pin.h{background:var(--red)}.pin.m{background:var(--amber)}.pin.l{background:var(--teal)}
+.map-label{position:absolute;left:12px;top:10px;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.inc{display:grid;gap:8px}
+.disclaimer{margin-top:14px;font-size:.8rem;color:var(--muted);font-style:italic}
+
+/* pilot */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.phase{border-top:3px solid var(--line);padding-top:20px}
+.phase:first-child{border-color:var(--amber)}
+.phase .eyebrow{color:var(--muted)}
+.phase:first-child .eyebrow{color:var(--amber)}
+.phase h3{font-size:1.35rem;margin:8px 0}
+.phase p{color:var(--muted);font-size:.93rem}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.why div{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.why b{display:block;margin-bottom:4px}
+.why span{color:var(--muted);font-size:.9rem}
+
+/* sectors + privacy */
+.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.privacy{margin-top:56px;display:flex;gap:22px;align-items:flex-start;background:linear-gradient(135deg,rgba(45,212,191,.08),transparent);border:1px solid var(--line);border-radius:18px;padding:28px}
+.privacy .icon{background:rgba(45,212,191,.13);flex-shrink:0}
+.privacy .icon svg{stroke:var(--teal)}
+.privacy h3{font-family:var(--sans);font-size:1.12rem;margin-bottom:6px}
+.privacy p{color:var(--muted)}
+
+/* about */
+.facts{display:grid;gap:12px}
+.fact{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:12px 0;font-size:.95rem}
+.fact span{color:var(--muted)}
+.fact b{font-weight:500;text-align:right}
+
+/* contact */
+.contact-box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.contact-box::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(rgba(245,165,36,.16),transparent 70%)}
+.contact-list{display:grid;gap:14px;position:relative;z-index:1}
+.contact-list a{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .2s}
+.contact-list a:hover{border-color:var(--amber)}
+.contact-list small{display:block;color:var(--muted);font-size:.78rem}
+
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.bbox,.rec::before{animation:none}}
+
+/* responsive */
+@media (max-width:1000px){
+  .flow{grid-template-columns:repeat(4,1fr)}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .why{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+  .links,.nav .btn-primary{display:none}
+  .menu-btn{display:block}
+  .links.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--bg);padding:20px;gap:16px;border-bottom:1px solid var(--line)}
+  .hero-grid,.split,.dash-body,.contact-box{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr 1fr}
+  .phases{grid-template-columns:1fr 1fr}
+  .contact-box{padding:32px 22px}
+  section{padding:72px 0}
+}
+@media (max-width:560px){
+  .brand small{display:none}
+  .brand{font-size:.9rem}
+  .grid3,.phases,.why{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:48px 0 64px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand"><span class="brand-mark">S</span><span>SWAMI INTELLIGENT SYSTEMS<small>AI · Computer Vision · Smart Governance</small></span></a>
+    <nav class="links" id="links">
+      <a href="#solution">Solution</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#pilot">Pilot Approach</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary">Request a Demo</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">AI Smart Ward · Video Analytics for Cities</span>
+      <h1>Your city already has the cameras. <em>Give them intelligence.</em></h1>
+      <p class="marathi">CCTV कॅमेऱ्यांपासून Civic Intelligence पर्यंत</p>
+      <p class="lead">AI Smart Ward adds an AI layer to existing municipal CCTV, spotting potholes, water leaks, fallen trees, garbage dumping and accidents as they happen, then routing each one to the right department and tracking it to closure.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Request a Live Demo →</a>
+        <a href="#solution" class="btn btn-ghost">See How It Works</a>
+      </div>
+      <div class="trust">
+        <span>Works on existing CCTV</span>
+        <span>Pilot-first, no city-wide commitment</span>
+        <span>Udyam-registered MSME</span>
+      </div>
+    </div>
+
+    <div class="feed reveal" aria-label="Illustration of AI detection on a CCTV feed">
+      <div class="feed-top"><span>CAM-12 · SECTOR 12 MAIN ROAD</span><span class="rec">LIVE AI</span></div>
+      <div class="screen">
+        <div class="bldg" style="left:4%;width:16%;height:30%"></div>
+        <div class="bldg" style="left:22%;width:10%;height:22%"></div>
+        <div class="bldg" style="right:6%;width:18%;height:34%"></div>
+        <div class="bldg" style="right:27%;width:9%;height:18%"></div>
+        <div class="road"></div><div class="lane"></div>
+        <div class="pothole"></div>
+        <div class="bbox" style="left:49%;bottom:10%;width:22%;height:17%"><label>POTHOLE · 0.92</label></div>
+      </div>
+      <div class="alerts">
+        <div class="alert"><b>Pothole detected → Engineering Dept.</b><span class="tag high">HIGH</span></div>
+        <div class="alert"><b>Water logging → Water Supply Dept.</b><span class="tag med">MEDIUM</span></div>
+        <div class="alert"><b>Fallen tree cleared → Ticket closed</b><span class="tag ok">RESOLVED</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">The challenge today</span>
+      <h2 style="margin:10px 0 16px">Cities record everything. Almost nobody is watching.</h2>
+      <p class="lead">Municipal departments still learn about most civic problems through complaints and phone calls, often hours or days after they occur. The footage existed all along; no one was looking at that camera at that moment.</p>
+      <div class="chips">
+        <span class="chip">Potholes</span><span class="chip">Water leaks</span><span class="chip">Fallen trees</span>
+        <span class="chip">Garbage dumping</span><span class="chip">Accidents</span><span class="chip">Traffic congestion</span><span class="chip">Suspicious activity</span>
+      </div>
+    </div>
+    <div class="quote reveal">
+      “CCTV can see everything, but no person can watch every camera every moment.”
+      <small>The result: delayed response, missing evidence and frustrated citizens. AI Smart Ward moves the city from reactive to proactive.</small>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION / FLOW -->
+<section id="solution">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Not just detection. Detection to closure.</h2>
+      <p class="lead">The real value of AI is not in the alert; it is in the action taken on it. Every step is logged, so accountability and transparency are built in.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="step"><h3>Existing CCTV</h3><p>Video from cameras the city already owns</p></div>
+      <div class="step"><h3>AI Analytics</h3><p>Models scan every frame, around the clock</p></div>
+      <div class="step"><h3>Incident Created</h3><p>Type, location, time and evidence captured</p></div>
+      <div class="step"><h3>Severity Set</h3><p>Priority assigned automatically</p></div>
+      <div class="step"><h3>Department Alerted</h3><p>Routed to the team that owns the problem</p></div>
+      <div class="step"><h3>Field Action</h3><p>Field team acts and uploads proof</p></div>
+      <div class="step"><h3>Closure</h3><p>Verified, closed and reported on the dashboard</p></div>
+    </div>
+    <p class="note reveal"><strong>No new cameras required.</strong> AI Smart Ward is a software layer over existing CCTV infrastructure, maximising the value of investments the city has already made.</p>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Capabilities</span>
+      <h2>What AI Smart Ward can detect</h2>
+      <p class="lead">Each detection is mapped to the department responsible for acting on it.</p>
+    </div>
+    <div class="grid3">
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="8" ry="3.5"/><path d="M4 15V9M20 15V9M8 7l4-3 4 3"/></svg></div><h3>Potholes &amp; road damage</h3><p>Identifies potholes and road obstructions with severity and location, often before a citizen complains.</p><div class="dept">Engineering</div></div>
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div><h3>Water leaks &amp; logging</h3><p>Flags pipeline leaks and water-logged roads early, reducing water loss and inconvenience.</p><div class="dept">Water Supply</div></div>
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/></svg></div><h3>Fallen trees</h3><p>High-severity alerts for fallen or dangerous trees, critical during monsoon and emergencies.</p><div class="dept">Garden / Tree Authority</div></div>
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div><h3>Garbage &amp; illegal dumping</h3><p>Detects garbage accumulation and unauthorised dumping at vulnerable spots.</p><div class="dept">Solid Waste Management</div></div>
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="7" rx="2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M6 9l2-4h8l2 4"/></svg></div><h3>Accidents &amp; traffic</h3><p>Near-instant detection of accidents, congestion and abnormal traffic events for faster response.</p><div class="dept">Traffic / Police</div></div>
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Public safety</h3><p>Loitering, restricted-area movement, abnormal activity and crowd anomalies.</p><div class="dept">Control Room</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Command Centre</span>
+      <h2>One dashboard for every ward</h2>
+      <p class="lead">Senior officials see open incidents, response times and department performance in real time, turning CCTV into data-driven governance.</p>
+    </div>
+    <div class="dash reveal">
+      <div class="kpis">
+        <div class="kpi"><span>Cameras online</span><b>248</b></div>
+        <div class="kpi"><span>AI alerts today</span><b>37</b></div>
+        <div class="kpi"><span>Critical</span><b style="color:var(--red)">4</b></div>
+        <div class="kpi"><span>Open</span><b>11</b></div>
+        <div class="kpi"><span>In progress</span><b style="color:var(--amber)">9</b></div>
+        <div class="kpi"><span>Resolved</span><b style="color:var(--teal)">17</b></div>
+      </div>
+      <div class="dash-body">
+        <div class="map">
+          <span class="map-label">WARD MAP VIEW</span>
+          <span class="pin h" style="left:22%;top:34%"></span><span class="pin m" style="left:48%;top:58%"></span>
+          <span class="pin h" style="left:70%;top:28%"></span><span class="pin l" style="left:60%;top:76%"></span>
+          <span class="pin m" style="left:34%;top:70%"></span><span class="pin l" style="left:82%;top:62%"></span>
+        </div>
+        <div class="inc">
+          <div class="alert"><b>Pothole · Sector 12</b><span class="tag high">HIGH</span></div>
+          <div class="alert"><b>Water leak · MG Road</b><span class="tag med">MEDIUM</span></div>
+          <div class="alert"><b>Fallen tree · Kalamboli</b><span class="tag high">HIGH</span></div>
+          <div class="alert"><b>Illegal parking · Old Panvel</b><span class="tag ok">LOW</span></div>
+          <div class="alert"><b>Garbage dumping · Market Road</b><span class="tag med">MEDIUM</span></div>
+        </div>
+      </div>
+      <p class="disclaimer">Illustrative dashboard with sample data. Live dashboards are configured for each pilot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pilot approach</span>
+      <h2>Start small. Prove it. Then scale.</h2>
+      <p class="lead">No city-wide commitment upfront. The corporation decides at every stage, based on measured results.</p>
+    </div>
+    <div class="phases reveal">
+      <div class="phase"><span class="eyebrow">Phase 1</span><h3>Pilot</h3><p>Deploy on selected cameras in chosen wards or locations.</p></div>
+      <div class="phase"><span class="eyebrow">Phase 2</span><h3>Evaluate</h3><p>Measure detection accuracy and the response workflow together with officials.</p></div>
+      <div class="phase"><span class="eyebrow">Phase 3</span><h3>Expand</h3><p>Add use cases and locations, department by department.</p></div>
+      <div class="phase"><span class="eyebrow">Phase 4</span><h3>City-wide</h3><p>Scale across the corporation once value is validated.</p></div>
+    </div>
+    <div class="why reveal">
+      <div><b>Reuse existing CCTV</b><span>Maximise current camera investment</span></div>
+      <div><b>Incremental rollout</b><span>Deploy in manageable stages</span></div>
+      <div><b>Department-wise</b><span>Expand one department at a time</span></div>
+      <div><b>Full audit trail</b><span>Every incident logged from alert to closure</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who we serve</span>
+      <h2>Built for public spaces that matter</h2>
+    </div>
+    <div class="grid3">
+      <div class="card reveal"><h3>Municipal corporations</h3><p>Ward-level civic monitoring for roads, water, sanitation, trees and traffic, integrated with department workflows.</p></div>
+      <div class="card reveal"><h3>Government departments</h3><p>AI video analytics for transport, public safety and facility monitoring under smart-governance programmes.</p></div>
+      <div class="card reveal"><h3>Campuses &amp; institutions</h3><p>Safety monitoring for colleges, schools and health facilities: restricted areas, after-hours movement and crowding.</p></div>
+    </div>
+    <div class="privacy reveal">
+      <div class="icon"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      <div>
+        <h3>Privacy-first, responsible AI</h3>
+        <p>Facial recognition is optional and controlled, enabled only where applicable law, policy and approval by the competent authority permit it. Our focus is on civic events, not on profiling citizens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">About us</span>
+      <h2 style="margin:10px 0 16px">Swami Intelligent Systems</h2>
+      <p class="lead">An AI and computer vision company from Navi Mumbai focused on smart governance, intelligent surveillance and digital transformation. We help cities and institutions get more value from the camera infrastructure they already own.</p>
+      <p class="lead" style="margin-top:14px">Field deployment and CCTV integration are delivered in association with <strong style="color:var(--text)">VC Tech</strong>, our technology deployment partner.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><span>Founder &amp; Director</span><b>Mrs. Swapna Amit Ghorpade</b></div>
+      <div class="fact"><span>Registration</span><b>MSME · UDYAM-MH-27-0265371</b></div>
+      <div class="fact"><span>Headquarters</span><b>Kharghar, Navi Mumbai, Maharashtra</b></div>
+      <div class="fact"><span>Focus</span><b>AI Video Analytics · Smart Governance</b></div>
+      <div class="fact"><span>Deployment partner</span><b>VC Tech</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div style="position:relative;z-index:1">
+        <span class="eyebrow">Next step</span>
+        <h2 style="margin:10px 0 14px">See it working on your own cameras</h2>
+        <p class="lead">We run a pilot demonstration on selected CCTV cameras so your team can judge the results first-hand, before any larger decision.</p>
+      </div>
+      <div class="contact-list">
+        <a href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20a%20demo%20of%20AI%20Smart%20Ward." target="_blank" rel="noopener">
+          <span class="icon" style="margin:0"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z"/></svg></span>
+          <span><small>WhatsApp</small>Chat with us</span></a>
+        <a href="tel:+919833028028">
+          <span class="icon" style="margin:0"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <span><small>Phone</small>+91 98330 28028</span></a>
+        <a href="mailto:info@swamiai.in?subject=AI%20Smart%20Ward%20demo%20request">
+          <span class="icon" style="margin:0"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><small>Email</small>info@swamiai.in</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr">2026</span> Swami Intelligent Systems · Kharghar, Navi Mumbai</span>
+    <span>AI Smart Ward — Intelligent Cities. Safer Tomorrow.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const btn=document.getElementById('menuBtn'),links=document.getElementById('links');
+btn.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
