@@ -1,5 +1,7 @@
 # Demo-request form: Supabase + WhatsApp setup
 
+**Status:** connected to Supabase project `swamiai-website` (ap-south-1, Mumbai). Steps 1–2 are done; step 3 (automatic WhatsApp alert) is optional.
+
 The form on swamiai.in works in two modes:
 
 * **Now (no Supabase yet):** after a visitor fills the form, WhatsApp opens with their details ready to send to +91 98330 28028.

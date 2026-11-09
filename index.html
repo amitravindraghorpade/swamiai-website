@@ -908,7 +908,7 @@ tabs.forEach(function(t,i){t.addEventListener('click',function(){selTab(t)});t.a
    SB_URL / SB_KEY: Supabase project URL and its public "anon" key (safe to publish:
    the database only allows inserting new enquiries, never reading them). Leave empty
    to send enquiries via WhatsApp only. */
-var SB_URL='', SB_KEY='';
+var SB_URL='https://frknymxmslepwaocfvbi.supabase.co', SB_KEY='sb_publishable_KSNOtW8s5eDf6liQmcoH2Q_HJ4DmYr_';
 var WA_NUM='919833028028';
 var form=$('#leadForm'),err=$('#fmErr'),sendBtn=$('.fm-btn',form);
 function t(k,en){var l=root.getAttribute('lang');return (l!=='en'&&window.I18N&&I18N[l]&&I18N[l][k])||en}
@@ -936,7 +936,7 @@ form.addEventListener('submit',function(e){
   sendBtn.disabled=true;
   var row={name:d.name,phone:d.phone,organisation:d.organisation,designation:d.designation||null,sector:d.sector,city:d.city,
     email:d.email||null,message:d.message||null,lang:root.getAttribute('lang'),consent:true,page:location.href.slice(0,300)};
-  fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
+  fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:{'apikey':SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
     .then(function(r){if(!r.ok)throw new Error(r.status);done()})
     .catch(function(){sendBtn.disabled=false;showErr(t('fm.e.net','Could not send right now. Please use the WhatsApp button instead.'));window.open(wa,'_blank','noopener')});
 });
