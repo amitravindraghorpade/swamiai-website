@@ -1,13 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<script>document.documentElement.classList.add("js")</script>
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('swami-theme')}catch(e){}
+if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t);})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Swami Intelligent Systems | AI Smart Ward</title>
-<meta name="description" content="AI Smart Ward turns a city's existing CCTV cameras into civic intelligence: detecting potholes, water leaks, fallen trees, garbage dumping and accidents, and tracking every incident from alert to closure.">
+<meta name="description" content="AI Smart Ward turns a city's existing CCTV cameras into civic intelligence: it detects potholes, garbage dumping, water logging, fallen trees and accidents, and tracks every incident from alert to closure.">
 <link rel="canonical" href="https://swamiai.in/">
-<meta name="theme-color" content="#1B2A6B">
+<meta name="theme-color" content="#070B1A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7F9FC" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="Swami Intelligent Systems | AI Smart Ward">
 <meta property="og:description" content="From CCTV cameras to civic intelligence. AI video analytics for smart governance, built on the cameras cities already own.">
 <meta property="og:type" content="website">
@@ -18,612 +22,723 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Swami Intelligent Systems","url":"https://swamiai.in/","logo":"https://swamiai.in/assets/logo-mark.png","email":"info@swamiai.in","telephone":"+91-98330-28028","address":{"@type":"PostalAddress","addressLocality":"Kharghar, Navi Mumbai","addressRegion":"Maharashtra","addressCountry":"IN"},"slogan":"AI Smart Ward — Intelligent Cities. Safer Tomorrow."}
 </script>
 <style>
+/* ===== Tokens ===== */
 :root{
-  --navy:#1B2A6B; --navy-deep:#0E1A4D; --green:#1F8A2E; --green-dark:#17702A; --blue:#2E7FC9; --orange:#EC9A32; --red:#D9434F;
-  --bg:#FFFFFF; --soft:#F4F7FB; --line:#E2E8F2; --text:#14203F; --muted:#5A6680;
-  --radius:16px; --shadow:0 1px 2px rgba(20,32,63,.06),0 8px 24px rgba(20,32,63,.07);
+  --green:#22A447; --green-2:#1F8A2E; --blue:#3B82F6; --cyan:#22D3EE; --orange:#F59E0B; --red:#EF4444; --navy:#1B2A6B;
+  --grad:linear-gradient(100deg,#22C55E 0%,#22D3EE 50%,#3B82F6 100%);
+  --radius:20px; --gutter:clamp(16px,4vw,32px);
   --font:"Plus Jakarta Sans","Noto Sans Devanagari",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
-  --gutter:clamp(16px,4vw,32px);
+}
+[data-theme="dark"]{
+  --bg:#070B1A; --bg-2:#0B1124; --surface:rgba(255,255,255,.04); --surface-2:rgba(255,255,255,.07); --solid:#0F1630;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --text:#EDF1FA; --muted:#9AA6C3; --head:#FFFFFF; --header:rgba(7,11,26,.72);
+  --shadow:0 20px 50px rgba(0,0,0,.45); --glow:0 0 0 1px rgba(255,255,255,.06),0 20px 60px rgba(34,211,238,.10);
+  --chip:rgba(255,255,255,.06); --badge-bg:#FFFFFF; color-scheme:dark;
+}
+[data-theme="light"]{
+  --bg:#F7F9FC; --bg-2:#EEF3FA; --surface:#FFFFFF; --surface-2:#F3F6FB; --solid:#FFFFFF;
+  --line:#E3E9F3; --line-2:#CFD8E7;
+  --text:#14203F; --muted:#5A6680; --head:#0F1C4D; --header:rgba(255,255,255,.82);
+  --shadow:0 18px 40px rgba(20,32,63,.10); --glow:0 1px 2px rgba(20,32,63,.05),0 18px 44px rgba(20,32,63,.09);
+  --chip:#EEF3FA; --badge-bg:#FFFFFF; color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip;transition:background .3s,color .3s}
+html[lang="mr"] body,html[lang="hi"] body{line-height:1.75}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:-9999px;top:8px;background:var(--navy);color:#fff;padding:10px 16px;border-radius:8px;z-index:100}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--green);color:#fff;padding:10px 16px;border-radius:8px;z-index:200}
 .skip:focus{left:8px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
-h1,h2,h3{line-height:1.18;letter-spacing:-.02em;color:var(--navy)}
-h2{font-size:clamp(1.65rem,1.1rem + 2.2vw,2.5rem);font-weight:800}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
+h1,h2,h3{color:var(--head);line-height:1.15;letter-spacing:-.025em}
+html[lang="mr"] h1,html[lang="mr"] h2,html[lang="hi"] h1,html[lang="hi"] h2{letter-spacing:0;line-height:1.3}
+h2{font-size:clamp(1.7rem,1.1rem + 2.4vw,2.75rem);font-weight:800}
 h3{font-weight:700}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
-.eyebrow::before{content:"";width:18px;height:2px;background:currentColor;border-radius:2px}
-.lead{color:var(--muted);font-size:clamp(1rem,.95rem + .3vw,1.1rem);max-width:660px}
-section{padding:clamp(64px,8vw,104px) 0}
-.sec-head{margin-bottom:clamp(32px,4vw,52px)}
-.sec-head h2{margin:12px 0 14px}
-.center{text-align:center}.center .lead{margin:0 auto}
-.soft{background:var(--soft)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);background:rgba(34,164,71,.10);border:1px solid rgba(34,164,71,.25);padding:5px 12px;border-radius:30px}
+html[lang="mr"] .eyebrow,html[lang="hi"] .eyebrow{font-family:var(--font);letter-spacing:.04em;font-weight:600}
+.lead{color:var(--muted);font-size:clamp(1rem,.95rem + .3vw,1.12rem);max-width:680px}
+section{padding:clamp(64px,8vw,110px) 0;position:relative}
+.sec-head{margin-bottom:clamp(32px,4vw,56px)}
+.sec-head h2{margin:16px 0 14px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.alt{background:var(--bg-2)}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:12px;font-weight:700;font-size:.97rem;border:2px solid transparent;transition:transform .15s,background .15s,box-shadow .15s,border-color .15s;cursor:pointer;text-align:center}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(31,138,46,.25)}
-.btn-primary:hover{background:var(--green-dark)}
-.btn-outline{border-color:var(--line);background:#fff;color:var(--navy)}
-.btn-outline:hover{border-color:var(--navy)}
-.btn-white{background:#fff;color:var(--navy)}
-.btn-ghost-w{border-color:rgba(255,255,255,.35);color:#fff}
-.btn-ghost-w:hover{border-color:#fff}
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 24px;border-radius:14px;font-weight:700;font-size:.98rem;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;text-align:center}
+.btn:hover{transform:translateY(-2px)}
 .btn svg{width:18px;height:18px;flex-shrink:0}
+.btn-primary{background:linear-gradient(100deg,#22A447,#16A34A 40%,#0EA5A4);color:#fff;box-shadow:0 10px 30px rgba(34,164,71,.35)}
+.btn-primary:hover{box-shadow:0 14px 36px rgba(34,164,71,.45)}
+.btn-glass{background:var(--surface);border-color:var(--line-2);color:var(--head);backdrop-filter:blur(8px)}
+.btn-glass:hover{border-color:var(--cyan)}
 
-/* header */
-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
-header.scrolled{border-color:var(--line);box-shadow:0 4px 18px rgba(20,32,63,.06)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+/* ===== Header ===== */
+header{position:sticky;top:0;z-index:80;background:var(--header);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand img{width:52px;height:auto;flex-shrink:0}
+.logo-badge{background:var(--badge-bg);border-radius:12px;padding:4px;display:grid;place-items:center;flex-shrink:0;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.logo-badge img{width:42px;height:auto}
 .brand-text{line-height:1.2;min-width:0}
-.brand-text b{display:block;font-size:1.02rem;font-weight:800;color:var(--navy);letter-spacing:-.01em}
-.brand-text span{display:block;font-size:.74rem;color:var(--green);font-weight:600;letter-spacing:.02em}
-.links{display:flex;align-items:center;gap:4px}
-.links a{padding:8px 12px;border-radius:8px;font-size:.93rem;font-weight:500;color:var(--muted);transition:color .15s,background .15s}
-.links a:hover{color:var(--navy);background:var(--soft)}
-.nav-cta{display:flex;align-items:center;gap:10px}
-.menu-btn{display:none;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer;align-items:center;justify-content:center}
-.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;position:relative;transition:transform .2s,background .2s}
-.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
-.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
-.menu-btn[aria-expanded="true"] span{background:transparent}
-.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
-.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.brand-text b{display:block;font-size:1rem;font-weight:800;color:var(--head);white-space:nowrap}
+.brand-text span{display:block;font-size:.72rem;color:var(--green);font-weight:600;white-space:nowrap}
+.links{display:flex;gap:2px}
+.links a{padding:8px 12px;border-radius:10px;font-size:.92rem;font-weight:500;color:var(--muted);transition:color .15s,background .15s;white-space:nowrap}
+.links a:hover{color:var(--head);background:var(--surface-2)}
+.tools{display:flex;align-items:center;gap:8px}
+.icon-btn{height:44px;min-width:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;padding:0 10px;transition:border-color .2s}
+.icon-btn:hover{border-color:var(--cyan)}
+.icon-btn svg{width:20px;height:20px}
+.sun{display:none}[data-theme="light"] .sun{display:block}[data-theme="light"] .moon{display:none}
+.lang{position:relative}
+.lang-btn{font-weight:700;font-size:.86rem}
+.lang-menu{position:absolute;right:0;top:52px;min-width:170px;background:var(--solid);border:1px solid var(--line-2);border-radius:14px;padding:6px;box-shadow:var(--shadow);display:none;z-index:90}
+.lang.open .lang-menu{display:block}
+.lang-menu button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:11px 12px;border-radius:10px;border:0;background:transparent;cursor:pointer;font-weight:600;text-align:left}
+.lang-menu button:hover,.lang-menu button[aria-checked="true"]{background:var(--surface-2)}
+.lang-menu button[aria-checked="true"]::after{content:"✓";color:var(--green)}
+.menu-btn{display:none}
+.burger,.burger::before,.burger::after{display:block;width:20px;height:2px;background:var(--head);border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.burger::before,.burger::after{content:"";position:absolute;left:0}.burger::before{top:-6px}.burger::after{top:6px}
+.menu-btn[aria-expanded="true"] .burger{background:transparent}
+.menu-btn[aria-expanded="true"] .burger::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .burger::after{transform:translateY(-6px) rotate(-45deg)}
 .drawer{display:none}
 
-/* hero */
-.hero{position:relative;padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px);overflow:hidden;background:
-  radial-gradient(700px 420px at 92% 8%,rgba(46,127,201,.12),transparent 70%),
-  radial-gradient(600px 400px at 0% 100%,rgba(31,138,46,.10),transparent 70%),
-  linear-gradient(180deg,#fff,var(--soft))}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 65%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 65%);opacity:.6;pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
-.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:6px 14px 6px 8px;font-size:.82rem;font-weight:600;color:var(--navy);box-shadow:var(--shadow)}
-.pill i{font-style:normal;background:var(--green);color:#fff;border-radius:20px;padding:2px 9px;font-size:.72rem}
-.hero h1{font-size:clamp(2rem,1.2rem + 3.6vw,3.5rem);font-weight:800;margin:20px 0 14px}
-.hero h1 .hl{background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
-.marathi{font-family:"Noto Sans Devanagari",var(--font);font-weight:600;color:var(--blue);font-size:clamp(.98rem,.9rem + .3vw,1.08rem);margin-bottom:14px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;font-size:.88rem;color:var(--muted);font-weight:500}
-.trust span{display:inline-flex;align-items:center;gap:7px}
+/* ===== Hero ===== */
+.hero{padding:clamp(36px,6vw,84px) 0 clamp(48px,6vw,80px);overflow:hidden}
+.aurora{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;filter:blur(70px);opacity:.55}
+[data-theme="light"] .aurora{opacity:.35}
+.aurora i{position:absolute;border-radius:50%;animation:float 16s ease-in-out infinite}
+.aurora i:nth-child(1){width:520px;height:520px;left:55%;top:0;background:#22D3EE}
+.aurora i:nth-child(2){width:460px;height:460px;left:5%;top:30%;background:#22C55E;animation-delay:-5s}
+.aurora i:nth-child(3){width:380px;height:380px;left:75%;top:45%;background:#3B82F6;animation-delay:-9s}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 70%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(36px,5vw,64px);align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line-2);border-radius:40px;padding:6px 14px 6px 6px;font-size:.84rem;font-weight:600;color:var(--head);backdrop-filter:blur(8px)}
+.pill i{font-style:normal;background:var(--grad);color:#05101F;border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:800}
+.hero h1{font-size:clamp(2.1rem,1.2rem + 4vw,4rem);font-weight:800;margin:22px 0 18px}
+.hero .lead{font-size:clamp(1.02rem,.95rem + .4vw,1.18rem)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;font-size:.9rem;color:var(--muted);font-weight:500}
+.trust span{display:inline-flex;align-items:center;gap:8px}
 .trust svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
+.device{position:relative;border-radius:22px;padding:10px;background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.03));border:1px solid var(--line-2);box-shadow:var(--shadow)}
+[data-theme="light"] .device{background:linear-gradient(160deg,#fff,#EEF3FA)}
+.device video,.device img{border-radius:14px;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0B1124}
+.float{position:absolute;display:flex;align-items:center;gap:10px;background:var(--solid);border:1px solid var(--line-2);border-radius:14px;padding:10px 14px;font-size:.82rem;font-weight:600;color:var(--head);box-shadow:var(--shadow);animation:bob 5s ease-in-out infinite;white-space:nowrap}
+.float small{display:block;color:var(--muted);font-weight:500;font-size:.72rem}
+.float .dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.float .dot svg{width:18px;height:18px}
+.f1{top:-18px;left:-22px}.f2{bottom:22%;right:-26px;animation-delay:-1.5s}.f3{bottom:-22px;left:12%;animation-delay:-3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.d-orange{background:rgba(245,158,11,.16);color:var(--orange)}.d-blue{background:rgba(59,130,246,.16);color:var(--blue)}.d-green{background:rgba(34,164,71,.16);color:var(--green)}.d-red{background:rgba(239,68,68,.15);color:var(--red)}.d-cyan{background:rgba(34,211,238,.15);color:#0EA5C6}
 
-/* camera feed */
-.feed{background:var(--navy-deep);border-radius:20px;padding:14px;box-shadow:0 30px 60px rgba(14,26,77,.28);position:relative}
-.feed-top{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:.7rem;color:#9FB0D6;padding:2px 4px 10px}
-.rec{color:#FF7B86;white-space:nowrap}
-.rec::before{content:"● ";animation:blink 1.4s infinite}
-@keyframes blink{50%{opacity:.2}}
-.screen{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#22305E 0%,#18234A 55%,#30353F 55%,#262A33 100%)}
-.screen .road{position:absolute;left:50%;bottom:0;width:100%;height:45%;transform:translateX(-50%);background:#3A3F4A;clip-path:polygon(40% 0,60% 0,95% 100%,5% 100%)}
-.screen .lane{position:absolute;left:50%;bottom:0;width:4px;height:45%;transform:translateX(-50%);background:repeating-linear-gradient(180deg,#D9DEE8 0 14px,transparent 14px 30px);opacity:.55}
-.screen .bldg{position:absolute;bottom:45%;background:#2B3A6C;border-top:2px solid #3A4C86}
-.screen .pothole{position:absolute;left:52%;bottom:14%;width:16%;height:9%;border-radius:50%;background:#16191F}
-.bbox{position:absolute;border:2px solid var(--orange);border-radius:4px;animation:pulse 2.4s infinite}
-.bbox label{position:absolute;top:-23px;left:-2px;background:var(--orange);color:#22160A;font-family:var(--mono);font-size:.64rem;padding:3px 7px;border-radius:4px 4px 4px 0;white-space:nowrap}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(236,154,50,.5)}50%{box-shadow:0 0 0 6px rgba(236,154,50,0)}}
-.alerts{margin-top:10px;display:grid;gap:8px}
-.hero .feed{padding-bottom:44px}
-.alert{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;font-size:.84rem;color:#E4EAF7}
-.tag{font-family:var(--mono);font-size:.64rem;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
-.tag.high{background:rgba(217,67,79,.18);color:#FF8A94}
-.tag.med{background:rgba(236,154,50,.18);color:#F5B565}
-.tag.ok{background:rgba(52,190,90,.18);color:#6FD98E}
-.float-badge{position:absolute;left:-18px;bottom:-34px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-size:.84rem;font-weight:600;color:var(--navy)}
-.float-badge b{display:block;font-size:1.15rem;color:var(--green)}
+/* ===== Marquee ===== */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:16px 0;background:var(--bg-2)}
+.track{display:flex;gap:12px;width:max-content;animation:scroll 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--chip);border:1px solid var(--line);font-size:.9rem;font-weight:600;color:var(--head);white-space:nowrap}
+.track span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grad)}
+@keyframes scroll{to{transform:translateX(-50%)}}
 
-/* highlights strip */
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
-.strip-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.strip-item{padding:26px 20px;border-left:1px solid var(--line)}
-.strip-item:first-child{border-left:0}
-.strip-item b{display:block;font-size:clamp(1.35rem,1.1rem + 1vw,1.75rem);font-weight:800;color:var(--navy);letter-spacing:-.02em}
-.strip-item span{font-size:.88rem;color:var(--muted)}
+/* ===== Stats ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--glow)}
+.stat b{display:block;font-size:clamp(1.8rem,1.3rem + 1.6vw,2.6rem);font-weight:800;letter-spacing:-.03em}
+.stat>span{color:var(--muted);font-size:.92rem}
 
-/* problem */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chip{background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 14px;font-size:.86rem;font-weight:500;color:var(--navy)}
-.quote-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(24px,4vw,40px);box-shadow:var(--shadow);position:relative}
-.quote-card::before{content:"“";position:absolute;top:-6px;left:24px;font-size:5.5rem;line-height:1;color:var(--orange);font-family:Georgia,serif}
-.quote-card p{font-size:clamp(1.2rem,1rem + .9vw,1.55rem);font-weight:700;color:var(--navy);line-height:1.4;margin-top:24px}
-.quote-card small{display:block;margin-top:16px;color:var(--muted);font-size:.95rem}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-.compare div{border-radius:12px;padding:14px;font-size:.88rem}
-.compare .before{background:#FCEEEF;color:#8A2730}
-.compare .after{background:#E8F5EB;color:#17592A}
-.compare b{display:block;margin-bottom:2px}
+/* ===== Demo video ===== */
+.demo-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,3vw,40px);align-items:start}
+.player{border-radius:22px;overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow);background:#000;position:relative}
+.player video{width:100%;aspect-ratio:16/9;background:#000}
+.chapters{display:grid;gap:10px;list-style:none}
+.chapters button{width:100%;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;text-align:left;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.chapters button:hover{border-color:var(--line-2);transform:translateX(3px)}
+.chapters button.active{border-color:var(--green);background:rgba(34,164,71,.10)}
+.chapters .ts{font-family:var(--mono);font-size:.78rem;color:var(--green);background:rgba(34,164,71,.12);border-radius:8px;padding:6px 0;text-align:center}
+.chapters b{display:block;color:var(--head);font-size:.98rem}
+.chapters small{color:var(--muted);font-size:.86rem;line-height:1.45;display:block}
+.note{margin-top:12px;font-size:.82rem;color:var(--muted);display:flex;gap:8px;align-items:center}
+.note svg{width:16px;height:16px;flex-shrink:0}
 
-/* timeline */
-.timeline{list-style:none;display:grid;grid-template-columns:repeat(7,1fr);gap:14px;position:relative;counter-reset:s}
-.timeline::before{content:"";position:absolute;top:22px;left:7%;right:7%;height:2px;background:linear-gradient(90deg,var(--blue),var(--green))}
-.timeline li{position:relative;text-align:center;counter-increment:s}
-.timeline .dot{width:46px;height:46px;margin:0 auto 14px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;color:var(--navy);position:relative;z-index:1}
-.timeline li:last-child .dot{background:var(--green);border-color:var(--green);color:#fff}
-.timeline .dot::before{content:counter(s)}
-.timeline h3{font-size:.98rem;margin-bottom:4px}
-.timeline p{font-size:.84rem;color:var(--muted);line-height:1.45}
-.callout{margin-top:40px;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow)}
-.callout p{color:var(--muted)}
-.callout strong{color:var(--navy)}
+/* ===== Problem ===== */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+.vs-card{border-radius:var(--radius);padding:clamp(22px,3vw,32px);border:1px solid var(--line)}
+.vs-card h3{font-size:1.2rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.vs-card ul{list-style:none;display:grid;gap:12px}
+.vs-card li{display:flex;gap:10px;color:var(--text);font-size:.96rem}
+.vs-card li svg{width:20px;height:20px;flex-shrink:0;margin-top:3px}
+.bad{background:linear-gradient(160deg,rgba(239,68,68,.10),transparent 60%)}
+.bad svg{color:var(--red)}
+.good{background:linear-gradient(160deg,rgba(34,164,71,.12),transparent 60%);border-color:rgba(34,164,71,.35)}
+.good svg{color:var(--green)}
+.vs-arrow{display:grid;place-items:center}
+.vs-arrow span{width:54px;height:54px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#05101F;box-shadow:0 10px 30px rgba(34,211,238,.3)}
+.vs-arrow svg{width:24px;height:24px}
+.quote{margin-top:28px;text-align:center;font-size:clamp(1.15rem,1rem + .8vw,1.5rem);font-weight:700;color:var(--head)}
 
-/* cards */
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#CBD5E6}
-.icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;flex-shrink:0}
-.icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.c-green{background:#E8F5EB;color:var(--green)}.c-blue{background:#E7F1FB;color:var(--blue)}.c-orange{background:#FDF1E2;color:#C77810}.c-navy{background:#E8EBF5;color:var(--navy)}.c-red{background:#FCEEEF;color:var(--red)}
-.card h3{font-size:1.1rem;margin-bottom:8px}
-.card p{color:var(--muted);font-size:.94rem;flex:1}
-.dept{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:.8rem;color:var(--muted)}
-.dept b{color:var(--navy);font-weight:600}
+/* ===== How it works ===== */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;list-style:none;counter-reset:s;position:relative}
+.flow::before{content:"";position:absolute;top:34px;left:10%;right:10%;height:2px;background:var(--line-2)}
+.flow::after{content:"";position:absolute;top:34px;left:10%;height:2px;width:calc(80% * var(--p,0));background:var(--grad);transition:width .6s ease}
+.flow li{text-align:center;counter-increment:s;position:relative;z-index:1}
+.flow .ic{width:68px;height:68px;margin:0 auto 16px;border-radius:20px;background:var(--solid);border:1px solid var(--line-2);display:grid;place-items:center;transition:transform .3s,border-color .3s,box-shadow .3s;color:var(--muted)}
+.flow .ic svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.flow li.on .ic{border-color:var(--green);color:var(--green);box-shadow:0 0 0 6px rgba(34,164,71,.12);transform:translateY(-4px)}
+.flow h3{font-size:1rem;margin-bottom:6px}
+.flow p{font-size:.88rem;color:var(--muted);line-height:1.5}
+.flow small{font-family:var(--mono);font-size:.7rem;color:var(--green);display:block;margin-bottom:4px}
 
-/* dashboard (dark band) */
-.dark{background:linear-gradient(160deg,var(--navy-deep),#13246A);color:#E4EAF7}
-.dark h2{color:#fff}.dark .lead{color:#AFBCDB}.dark .eyebrow{color:#7FD493}
-.dash{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:clamp(14px,2.5vw,22px)}
+/* ===== Capabilities (clips) ===== */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s;box-shadow:var(--glow)}
+.cap:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.cap .media{position:relative;aspect-ratio:16/9;background:#0B1124}
+.cap .media video,.cap .media img{width:100%;height:100%;object-fit:cover}
+.cap .live{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:.66rem;background:rgba(0,0,0,.6);color:#fff;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:6px}
+.cap .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#EF4444;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.cap .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cap h3{font-size:1.12rem;margin-bottom:6px}
+.cap p{color:var(--muted);font-size:.93rem;flex:1}
+.dept{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--head);background:var(--chip);border:1px solid var(--line);padding:6px 12px;border-radius:30px;align-self:flex-start}
+.dept::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.more{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.more span{padding:8px 14px;border-radius:30px;border:1px dashed var(--line-2);font-size:.88rem;color:var(--muted);font-weight:500}
+
+/* ===== Benefits ===== */
+.ben{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.b{padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
+.b .i{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px}
+.b .i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.b h3{font-size:1.08rem;margin-bottom:6px}
+.b p{color:var(--muted);font-size:.93rem}
+
+/* ===== Dashboard ===== */
+.dash{border-radius:24px;border:1px solid var(--line-2);background:var(--solid);box-shadow:var(--shadow);overflow:hidden}
+.dash-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
+.dash-top b{font-size:.9rem;color:var(--head)}
+.dash-top span{font-family:var(--mono);font-size:.72rem;color:var(--green)}
+.dash-in{padding:clamp(14px,2.5vw,22px)}
 .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
-.kpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px}
-.kpi span{font-size:.74rem;color:#9FB0D6;display:block}
-.kpi b{font-size:1.6rem;font-weight:800;color:#fff}
+.kpi{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi span{font-size:.74rem;color:var(--muted);display:block}
+.kpi b{font-size:1.6rem;font-weight:800;color:var(--head)}
 .dash-body{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}
-.map{border:1px solid rgba(255,255,255,.08);border-radius:12px;min-height:240px;position:relative;overflow:hidden;background-color:rgba(255,255,255,.03);background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
-.pin{position:absolute;width:14px;height:14px;border-radius:50%;border:3px solid var(--navy-deep)}
-.pin.h{background:#FF6B76}.pin.m{background:var(--orange)}.pin.l{background:#4CC46E}
-.map-label{position:absolute;left:12px;top:10px;font-family:var(--mono);font-size:.68rem;color:#9FB0D6}
+.map{border:1px solid var(--line);border-radius:14px;min-height:260px;position:relative;overflow:hidden;background-color:var(--surface-2);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px}
+.map .road{position:absolute;background:var(--line-2);border-radius:4px}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;border:3px solid var(--solid);transform:translate(-50%,-50%)}
+.pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid currentColor;opacity:0;animation:ping 2.2s infinite}
+.pin.h{background:var(--red);color:var(--red)}.pin.m{background:var(--orange);color:var(--orange)}.pin.l{background:var(--green);color:var(--green)}
+@keyframes ping{0%{transform:scale(.6);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+.map-label{position:absolute;left:12px;top:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
 .inc{display:grid;gap:8px;align-content:start}
-.disclaimer{margin-top:14px;font-size:.8rem;color:#9FB0D6;font-style:italic}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:.86rem;color:var(--head)}
+.tag{font-family:var(--mono);font-size:.64rem;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-weight:500}
+.tag.h{background:rgba(239,68,68,.15);color:var(--red)}.tag.m{background:rgba(245,158,11,.16);color:#D97706}.tag.l{background:rgba(34,164,71,.15);color:var(--green)}
+[data-theme="dark"] .tag.m{color:#FBBF24}
+.disclaimer{margin-top:12px;font-size:.8rem;color:var(--muted);font-style:italic}
 
-/* pilot */
-.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:p}
-.phase{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden}
-.phase::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--line)}
-.phase:nth-child(1)::before{background:var(--green)}.phase:nth-child(2)::before{background:var(--blue)}.phase:nth-child(3)::before{background:var(--orange)}.phase:nth-child(4)::before{background:var(--navy)}
-.phase small{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em}
-.phase h3{font-size:1.25rem;margin:6px 0 8px}
-.phase p{color:var(--muted);font-size:.93rem}
-.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
-.why div{display:flex;gap:12px;align-items:flex-start;padding:18px;border-radius:14px;background:var(--soft)}
-.why svg{width:22px;height:22px;color:var(--green);flex-shrink:0;margin-top:2px}
-.why b{display:block;color:var(--navy);font-size:.95rem}
-.why span{color:var(--muted);font-size:.88rem}
+/* ===== Pilot ===== */
+.road-map{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ph{position:relative;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.ph .n{font-size:3.2rem;font-weight:800;line-height:1;opacity:.12;position:absolute;right:16px;top:10px;color:var(--head)}
+.ph small{font-family:var(--mono);font-size:.72rem;color:var(--green);letter-spacing:.08em}
+html[lang="mr"] .ph small,html[lang="hi"] .ph small{font-family:var(--font)}
+.ph h3{font-size:1.3rem;margin:6px 0 8px}
+.ph p{color:var(--muted);font-size:.93rem}
+.ph .bar{height:4px;border-radius:4px;background:var(--line);margin-top:18px;overflow:hidden}
+.ph .bar i{display:block;height:100%;background:var(--grad)}
 
-/* privacy */
-.privacy{margin-top:28px;display:flex;gap:18px;align-items:flex-start;background:#E8F5EB;border-radius:18px;padding:clamp(20px,3vw,28px)}
-.privacy .icon{background:#fff;margin:0}
-.privacy h3{font-size:1.1rem;margin-bottom:4px}
-.privacy p{color:#2F4A37}
+/* ===== Sectors & trust ===== */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sec-card{padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
+.sec-card .i{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex-shrink:0}
+.sec-card .i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sec-card h3{font-size:1.06rem;margin-bottom:4px}
+.sec-card p{color:var(--muted);font-size:.92rem}
 
-/* about */
-.about-logo{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow);display:grid;place-items:center}
+/* ===== About ===== */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.about-logo{background:#fff;border-radius:28px;padding:clamp(24px,4vw,48px);box-shadow:var(--shadow);display:grid;place-items:center;border:1px solid var(--line)}
 .about-logo img{width:min(100%,300px)}
-.facts{margin-top:24px;border-top:1px solid var(--line)}
-.fact{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:13px 0;font-size:.94rem}
-.fact span{color:var(--muted)}
-.fact b{font-weight:600;color:var(--navy);text-align:right}
+.facts{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact{padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.fact span{display:block;color:var(--muted);font-size:.8rem}
+.fact b{color:var(--head);font-weight:700;font-size:.95rem;word-break:break-word}
 
-/* faq */
-.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
-.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;transition:box-shadow .2s}
-.faq details[open]{box-shadow:var(--shadow)}
-.faq summary{list-style:none;cursor:pointer;padding:18px 56px 18px 22px;font-weight:700;color:var(--navy);position:relative;min-height:48px}
+/* ===== FAQ ===== */
+.faq{max-width:840px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;transition:border-color .2s}
+.faq details[open]{border-color:var(--line-2)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 60px 18px 22px;font-weight:700;color:var(--head);position:relative;min-height:56px;display:flex;align-items:center}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:600;color:var(--green);transition:transform .2s}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:var(--chip);display:grid;place-items:center;color:var(--green);font-weight:600;transition:transform .2s}
 .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
 .faq details p{padding:0 22px 20px;color:var(--muted)}
 
-/* contact */
-.cta-band{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 60%,#1F4E8C);border-radius:26px;padding:clamp(28px,5vw,60px);display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,48px);align-items:center;position:relative;overflow:hidden;color:#fff}
-.cta-band::after{content:"";position:absolute;right:-140px;top:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(rgba(31,138,46,.45),transparent 70%)}
-.cta-band h2{color:#fff;margin:12px 0}
-.cta-band .lead{color:#C4CFEA}
-.cta-band .eyebrow{color:#7FD493}
-.contact-list{display:grid;gap:12px;position:relative;z-index:1}
-.contact-list a{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;min-height:64px;transition:background .2s,border-color .2s}
-.contact-list a:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
-.contact-list .icon{width:42px;height:42px;margin:0;background:#fff}
-.contact-list small{display:block;color:#AFBCDB;font-size:.76rem}
-.contact-list strong{font-weight:600;word-break:break-word}
+/* ===== Contact ===== */
+.cta{position:relative;border-radius:30px;padding:clamp(28px,5vw,64px);overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,48px);align-items:center;background:linear-gradient(135deg,#0E1A4D,#13246A 55%,#0F4C6E);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.cta::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-120px;top:-160px;background:radial-gradient(rgba(34,197,94,.45),transparent 70%)}
+.cta::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;left:-140px;bottom:-200px;background:radial-gradient(rgba(34,211,238,.35),transparent 70%)}
+.cta>*{position:relative;z-index:1}
+.cta h2{color:#fff;margin:16px 0 12px}
+.cta .lead{color:#C4CFEA}
+.cta .eyebrow{color:#86EFAC;background:rgba(134,239,172,.12);border-color:rgba(134,239,172,.3)}
+.contact{display:grid;gap:12px}
+.contact a{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;min-height:68px;transition:background .2s,border-color .2s,transform .2s}
+.contact a:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);transform:translateX(4px)}
+.contact .i{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;flex-shrink:0}
+.contact .i svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.contact small{display:block;color:#AFBCDB;font-size:.76rem}
+.contact strong{font-weight:700;word-break:break-word}
 
-/* footer */
-footer{padding:48px 0 32px;border-top:1px solid var(--line)}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+/* ===== Footer ===== */
+footer{padding:56px 0 30px;border-top:1px solid var(--line);margin-top:clamp(48px,6vw,80px)}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
 .foot-brand{display:flex;gap:14px;align-items:flex-start}
-.foot-brand img{width:60px}
-.foot h4{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.foot ul{list-style:none;display:grid;gap:8px;font-size:.93rem}
+.foot-brand .logo-badge img{width:54px}
+.foot h4{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.foot ul{list-style:none;display:grid;gap:9px;font-size:.94rem}
 .foot ul a:hover{color:var(--green)}
 .foot p{color:var(--muted);font-size:.9rem}
-.copy{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:.84rem;color:var(--muted)}
+.copy{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:.84rem;color:var(--muted)}
 
-/* floating whatsapp */
-.wa{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(37,211,102,.4);transition:transform .2s}
-.wa:hover{transform:scale(1.06)}
+/* ===== Floating ===== */
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.45);transition:transform .2s}
+.wa:hover{transform:scale(1.07)}
 .wa svg{width:30px;height:30px}
+.wa::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:ping 2.4s infinite}
+.top-btn{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:calc(max(18px,env(safe-area-inset-bottom)) + 72px);z-index:70;width:46px;height:46px;border-radius:50%;background:var(--solid);border:1px solid var(--line-2);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:var(--shadow);cursor:pointer}
+.top-btn.show{opacity:1;pointer-events:auto}
+.top-btn svg{width:20px;height:20px}
 
-/* reveal */
-.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+/* ===== Reveal ===== */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.bbox,.rec::before{animation:none}.card:hover,.btn:hover{transform:none}}
-
-/* ---------- responsive ---------- */
-@media (max-width:1100px){
-  .links a{padding:8px 9px;font-size:.9rem}
-  .kpis{grid-template-columns:repeat(3,1fr)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .aurora i,.float,.track,.pin::after,.wa::before,.cap .live::before{animation:none}
 }
-@media (max-width:980px){
-  .links,.nav-cta .btn{display:none}
-  .menu-btn{display:flex}
-  .drawer{display:block;position:fixed;inset:76px 0 0 0;background:#fff;z-index:55;padding:16px var(--gutter) calc(24px + env(safe-area-inset-bottom));overflow-y:auto;transform:translateX(100%);visibility:hidden;transition:transform .25s ease,visibility .25s}
+
+/* ===== Responsive ===== */
+@media (max-width:1180px){.links a{padding:8px 8px;font-size:.88rem}}
+@media (max-width:1060px){
+  .links{display:none}
+  .menu-btn{display:inline-flex}
+  .tools .btn{display:none}
+  .drawer{display:block;position:fixed;inset:76px 0 0 0;background:var(--bg);z-index:75;padding:12px var(--gutter) calc(28px + env(safe-area-inset-bottom));overflow-y:auto;transform:translateX(100%);visibility:hidden;transition:transform .28s ease,visibility .28s}
   .drawer.open{transform:none;visibility:visible}
-  .drawer a.nl{display:flex;justify-content:space-between;align-items:center;min-height:56px;border-bottom:1px solid var(--line);font-size:1.08rem;font-weight:600;color:var(--navy)}
+  .drawer a.nl{display:flex;justify-content:space-between;align-items:center;min-height:58px;border-bottom:1px solid var(--line);font-size:1.1rem;font-weight:600;color:var(--head)}
   .drawer a.nl::after{content:"→";color:var(--green)}
-  .drawer .btn{width:100%;margin-top:20px}
-  .hero-grid,.split,.cta-band{grid-template-columns:1fr}
-  .feed{max-width:560px;width:100%;margin:0 auto}
-  .timeline{grid-template-columns:repeat(4,1fr);row-gap:28px}
-  .timeline::before{display:none}
-  .phases,.why{grid-template-columns:repeat(2,1fr)}
-  .strip-grid{grid-template-columns:repeat(2,1fr)}
-  .strip-item:nth-child(3){border-left:0}
-  .strip-item:nth-child(n+3){border-top:1px solid var(--line)}
+  .drawer .btn{width:100%;margin-top:22px}
+  .hero-grid,.demo-grid,.about,.cta{grid-template-columns:1fr}
+  .hero-visual{max-width:620px;width:100%;margin:0 auto}
+  .bento,.ben{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .road-map{grid-template-columns:repeat(2,1fr)}
+  .kpis{grid-template-columns:repeat(3,1fr)}
   .dash-body{grid-template-columns:1fr}
-  .foot{grid-template-columns:1fr 1fr}
-  .foot>div:first-child{grid-column:1/-1}
-  .about-logo{max-width:420px;width:100%}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}
+  .about-logo{max-width:420px;width:100%;margin:0 auto}
+}
+@media (max-width:760px){
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow::before,.flow::after{display:none}
+  .flow li{display:grid;grid-template-columns:60px 1fr;column-gap:16px;text-align:left;padding-bottom:22px;position:relative}
+  .flow li::before{content:"";position:absolute;left:29px;top:64px;bottom:2px;width:2px;background:var(--line-2)}
+  .flow li:last-child::before{display:none}
+  .flow .ic{width:60px;height:60px;margin:0;grid-row:1/4;border-radius:18px}
+  .flow small{margin-top:6px}
+  .vs{grid-template-columns:1fr}
+  .vs-arrow span{transform:rotate(90deg)}
+  .two{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .nav{height:68px}
-  .drawer{inset:68px 0 0 0}
+  .nav{height:68px}.drawer{inset:68px 0 0 0}
   html{scroll-padding-top:76px}
-  .brand img{width:44px}
-  .brand-text b{font-size:.94rem}
+  .logo-badge img{width:36px}
+  .brand-text b{font-size:.92rem}
   .cta-row .btn{flex:1 1 100%}
-  .float-badge{position:static;margin-top:12px;justify-content:center}
-  .hero .feed{padding-bottom:14px}
-  /* vertical timeline */
-  .timeline{grid-template-columns:1fr;gap:0}
-  .timeline li{text-align:left;display:grid;grid-template-columns:46px 1fr;column-gap:16px;padding-bottom:20px}
-  .timeline li::after{content:"";position:absolute;left:22px;top:46px;bottom:0;width:2px;background:var(--line)}
-  .timeline li:last-child::after{display:none}
-  .timeline .dot{margin:0;grid-row:1/3}
-  .timeline h3{align-self:end;margin-top:4px}
-  .phases,.why,.compare{grid-template-columns:1fr}
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .kpi b{font-size:1.35rem}
-  .callout{flex-direction:column;align-items:flex-start}
-  .privacy{flex-direction:column}
-  .fact{flex-direction:column;gap:2px}
-  .fact b{text-align:left}
-  .foot{grid-template-columns:1fr}
+  .bento,.ben,.road-map,.facts{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}.kpi b{font-size:1.35rem}
+  .float{font-size:.74rem;padding:8px 10px}.float .dot{width:28px;height:28px}
+  .f1{left:-6px;top:-16px}.f2{right:-6px}.f3{left:6%;bottom:-18px}
   .wa{width:54px;height:54px}
+  .foot{grid-template-columns:1fr}
 }
-@media (max-width:380px){
+@media (max-width:400px){
   .brand-text span{display:none}
-  .brand-text b{font-size:.88rem}
-  .brand{gap:9px}
-  .brand img{width:40px}
-  .strip-grid{grid-template-columns:1fr}
-  .strip-item{border-left:0;border-top:1px solid var(--line)}
-  .strip-item:first-child{border-top:0}
-  .alert{font-size:.8rem}
-  .card{padding:22px}
+  .brand-text b{font-size:.84rem;white-space:normal;line-height:1.15}
+  .brand{gap:8px}
+  .lang-btn .lbl{display:none}
+  .icon-btn{min-width:42px;padding:0 8px}
+  .tools{gap:6px}
+  .f2{display:none}
+  .stats{grid-template-columns:1fr}
 }
-@media (min-width:1600px){
-  .wrap{max-width:1280px}
-}
+@media (min-width:1600px){.wrap{max-width:1300px}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <header id="top">
   <div class="wrap nav">
-    <a href="#top" class="brand" aria-label="Swami Intelligent Systems home">
-      <img src="assets/logo-mark.png" alt="Swami Intelligent Systems logo" width="52" height="55">
-      <span class="brand-text"><b>Swami Intelligent Systems</b><span>AI Smart Governance</span></span>
+    <a href="#top" class="brand" aria-label="Swami Intelligent Systems">
+      <span class="logo-badge"><img src="assets/logo-mark.png" alt="Swami Intelligent Systems logo" width="42" height="44"></span>
+      <span class="brand-text"><b>Swami Intelligent Systems</b><span data-i18n="tagline">AI Smart Governance</span></span>
     </a>
     <nav class="links" aria-label="Main">
-      <a href="#solution">How it works</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#pilot">Pilot</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="#demo" data-i18n="nav.demo">Demo</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#capabilities" data-i18n="nav.cap">Capabilities</a>
+      <a href="#pilot" data-i18n="nav.pilot">Pilot</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-primary">Request a Demo</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    <div class="tools">
+      <div class="lang" id="lang">
+        <button class="icon-btn lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span class="lbl" id="langLbl">EN</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <button role="menuitemradio" data-lang="en" aria-checked="true">English</button>
+          <button role="menuitemradio" data-lang="mr" aria-checked="false">मराठी</button>
+          <button role="menuitemradio" data-lang="hi" aria-checked="false">हिंदी</button>
+        </div>
+      </div>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch dark or light mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="#contact" class="btn btn-primary" data-i18n="cta.book">Book a Demo</a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span class="burger"></span></button>
     </div>
   </div>
 </header>
 
 <nav class="drawer" id="drawer" aria-label="Mobile">
-  <a class="nl" href="#solution">How it works</a>
-  <a class="nl" href="#capabilities">Capabilities</a>
-  <a class="nl" href="#pilot">Pilot approach</a>
-  <a class="nl" href="#about">About us</a>
-  <a class="nl" href="#faq">FAQ</a>
-  <a class="nl" href="#contact">Contact</a>
-  <a href="#contact" class="btn btn-primary">Request a Live Demo</a>
+  <a class="nl" href="#demo" data-i18n="nav.demo">Demo</a>
+  <a class="nl" href="#how" data-i18n="nav.how">How it works</a>
+  <a class="nl" href="#capabilities" data-i18n="nav.cap">Capabilities</a>
+  <a class="nl" href="#benefits" data-i18n="nav.ben">Benefits</a>
+  <a class="nl" href="#pilot" data-i18n="nav.pilot">Pilot</a>
+  <a class="nl" href="#about" data-i18n="nav.about">About</a>
+  <a class="nl" href="#faq" data-i18n="nav.faq">FAQ</a>
+  <a class="nl" href="#contact" data-i18n="nav.contact">Contact</a>
+  <a href="#contact" class="btn btn-primary" data-i18n="cta.book">Book a Demo</a>
 </nav>
 
 <main id="main">
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section class="hero">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="gridbg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="pill"><i>NEW</i> AI Smart Ward for Indian cities</span>
-      <h1>Your city already has the cameras. <span class="hl">Give them intelligence.</span></h1>
-      <p class="marathi">CCTV कॅमेऱ्यांपासून Civic Intelligence पर्यंत</p>
-      <p class="lead">AI Smart Ward adds an AI layer to existing municipal CCTV. It spots potholes, water leaks, fallen trees, garbage dumping and accidents as they happen, routes each one to the right department, and tracks it until it is closed.</p>
+      <span class="pill"><i data-i18n="hero.new">NEW</i><span data-i18n="hero.pill">AI Smart Ward for Indian cities</span></span>
+      <h1><span data-i18n="hero.h1a">Your city already has the cameras.</span> <span class="grad" data-i18n="hero.h1b">Give them intelligence.</span></h1>
+      <p class="lead" data-i18n="hero.sub">AI Smart Ward adds artificial intelligence to your existing CCTV. It spots potholes, garbage dumping, water logging, fallen trees and accidents the moment they happen, alerts the right department, and tracks every case until it is closed.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Request a Live Demo
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#solution" class="btn btn-outline">See How It Works</a>
+        <a href="#demo" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span data-i18n="hero.watch">Watch the 22-sec demo</span></a>
+        <a href="#contact" class="btn btn-glass" data-i18n="hero.book">Book a free demo</a>
       </div>
       <div class="trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Works on existing CCTV</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Pilot-first approach</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Udyam-registered MSME</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="trust.1">No new cameras</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="trust.2">Pilot first, then scale</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="trust.3">Udyam-registered MSME</span></span>
       </div>
     </div>
-
-    <div class="reveal" style="position:relative">
-      <div class="feed" role="img" aria-label="Illustration: AI detecting a pothole on a CCTV feed and alerting departments">
-        <div class="feed-top"><span>CAM-12 · SECTOR 12 MAIN ROAD</span><span class="rec">LIVE AI</span></div>
-        <div class="screen">
-          <div class="bldg" style="left:4%;width:16%;height:30%"></div>
-          <div class="bldg" style="left:22%;width:10%;height:22%"></div>
-          <div class="bldg" style="right:6%;width:18%;height:34%"></div>
-          <div class="bldg" style="right:27%;width:9%;height:18%"></div>
-          <div class="road"></div><div class="lane"></div>
-          <div class="pothole"></div>
-          <div class="bbox" style="left:49%;bottom:10%;width:22%;height:17%"><label>POTHOLE · 0.92</label></div>
-        </div>
-        <div class="alerts">
-          <div class="alert"><span>Pothole → Engineering Dept.</span><span class="tag high">HIGH</span></div>
-          <div class="alert"><span>Water logging → Water Supply</span><span class="tag med">MEDIUM</span></div>
-          <div class="alert"><span>Fallen tree cleared → Closed</span><span class="tag ok">RESOLVED</span></div>
-        </div>
+    <div class="hero-visual reveal">
+      <div class="device">
+        <video class="lazy-clip" data-src="assets/clip-pothole.mp4" poster="assets/clip-pothole.jpg" muted loop playsinline preload="none" aria-label="Animation: AI detects a pothole on a CCTV feed"></video>
+        <div class="float f1"><span class="dot d-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><span><span data-i18n="fl.1">Pothole detected</span><small data-i18n="fl.1s">Confidence 92% · Severity high</small></span></div>
+        <div class="float f2"><span class="dot d-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span><span data-i18n="fl.2">Engineering alerted</span><small data-i18n="fl.2s">Within seconds</small></span></div>
+        <div class="float f3"><span class="dot d-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg></span><span><span data-i18n="fl.3">Tracked to closure</span><small data-i18n="fl.3s">With photo evidence</small></span></div>
       </div>
-      <div class="float-badge"><span class="icon c-green" style="width:38px;height:38px;margin:0"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>0 new cameras</b>Software layer on existing CCTV</span></div>
     </div>
   </div>
 </section>
 
-<!-- STRIP -->
-<div class="strip">
-  <div class="wrap strip-grid">
-    <div class="strip-item"><b>24×7</b><span>AI watching every connected camera</span></div>
-    <div class="strip-item"><b>6+</b><span>Civic event types detected</span></div>
-    <div class="strip-item"><b>Alert → Closure</b><span>Every incident tracked end to end</span></div>
-    <div class="strip-item"><b>4 phases</b><span>Pilot first, scale after validation</span></div>
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-label="Events detected">
+  <div class="track" id="track">
+    <span data-i18n="ev.1">Potholes</span><span data-i18n="ev.2">Garbage dumping</span><span data-i18n="ev.3">Water logging</span><span data-i18n="ev.4">Fallen trees</span><span data-i18n="ev.5">Road accidents</span><span data-i18n="ev.6">Traffic congestion</span><span data-i18n="ev.7">Loitering</span><span data-i18n="ev.8">Restricted-area entry</span><span data-i18n="ev.9">Crowd build-up</span><span data-i18n="ev.10">Illegal parking</span>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="soft">
-  <div class="wrap split">
-    <div class="reveal">
-      <span class="eyebrow">The challenge today</span>
-      <h2 style="margin:12px 0 14px">Cities record everything. Almost nobody is watching.</h2>
-      <p class="lead">Municipal departments still learn about most civic problems through complaints and phone calls, often hours or days later. The footage was there all along. No one was looking at that camera at that moment.</p>
-      <div class="chips">
-        <span class="chip">Potholes</span><span class="chip">Water leaks</span><span class="chip">Fallen trees</span>
-        <span class="chip">Garbage dumping</span><span class="chip">Accidents</span><span class="chip">Traffic</span><span class="chip">Public safety</span>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="quote-card">
-        <p>CCTV can see everything, but no person can watch every camera every moment.</p>
-        <small>AI Smart Ward moves the city from reacting to complaints to acting before them.</small>
-        <div class="compare">
-          <div class="before"><b>Today: reactive</b>Late response, missing evidence, citizen frustration</div>
-          <div class="after"><b>With AI: proactive</b>Early detection, logged evidence, tracked action</div>
-        </div>
-      </div>
-    </div>
+<!-- ===== STATS ===== -->
+<section style="padding-bottom:0">
+  <div class="wrap stats">
+    <div class="stat reveal"><b class="grad">24×7</b><span data-i18n="st.1">AI watching every connected camera</span></div>
+    <div class="stat reveal"><b class="grad"><span class="count" data-to="10">10</span>+</b><span data-i18n="st.2">Civic event types detected</span></div>
+    <div class="stat reveal"><b class="grad"><span class="count" data-to="0">0</span></b><span data-i18n="st.3">New cameras needed</span></div>
+    <div class="stat reveal"><b class="grad"><span class="count" data-to="4">4</span>-<span data-i18n="st.4u">step</span></b><span data-i18n="st.4">Pilot path, decide at every stage</span></div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="solution">
+<!-- ===== DEMO VIDEO ===== -->
+<section id="demo">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Not just detection. Detection to closure.</h2>
-      <p class="lead">The value of AI is not in the alert; it is in the action taken on it. Every step is recorded, so accountability and transparency are built in.</p>
+      <span class="eyebrow" data-i18n="demo.eb">See it in action</span>
+      <h2 data-i18n="demo.h2">From pothole to repair, in one connected flow</h2>
+      <p class="lead" data-i18n="demo.p">Watch how AI Smart Ward finds a pothole on a live camera, creates an incident, alerts the Engineering Department and closes the case once it is fixed. Tap any step to jump to it.</p>
     </div>
-    <ol class="timeline reveal">
-      <li><span class="dot"></span><h3>Existing CCTV</h3><p>Video from cameras the city already owns</p></li>
-      <li><span class="dot"></span><h3>AI analytics</h3><p>Every frame scanned, round the clock</p></li>
-      <li><span class="dot"></span><h3>Incident created</h3><p>Type, place, time and snapshot captured</p></li>
-      <li><span class="dot"></span><h3>Severity set</h3><p>Priority assigned automatically</p></li>
-      <li><span class="dot"></span><h3>Department alerted</h3><p>Routed to the team that owns it</p></li>
-      <li><span class="dot"></span><h3>Field action</h3><p>Team acts and uploads proof</p></li>
-      <li><span class="dot"></span><h3>Closure</h3><p>Verified, closed and reported</p></li>
+    <div class="demo-grid">
+      <div class="reveal">
+        <div class="player">
+          <video id="demoVid" controls playsinline muted preload="metadata" poster="assets/pothole-demo-poster.jpg">
+            <source src="assets/pothole-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg><span data-i18n="demo.note">Illustrative animation of the workflow. A live demonstration on your cameras is available on request.</span></p>
+      </div>
+      <ol class="chapters reveal" id="chapters">
+        <li><button data-t="0"><span class="ts">0:00</span><span><b data-i18n="ch.1">AI scans the feed</b><small data-i18n="ch.1s">Every frame checked, round the clock</small></span></button></li>
+        <li><button data-t="3"><span class="ts">0:03</span><span><b data-i18n="ch.2">Pothole detected</b><small data-i18n="ch.2s">Marked with confidence and severity</small></span></button></li>
+        <li><button data-t="6.8"><span class="ts">0:07</span><span><b data-i18n="ch.3">Incident created</b><small data-i18n="ch.3s">Type, location, time and department filled in</small></span></button></li>
+        <li><button data-t="10.8"><span class="ts">0:11</span><span><b data-i18n="ch.4">Department alerted</b><small data-i18n="ch.4s">Engineering and field team notified</small></span></button></li>
+        <li><button data-t="15"><span class="ts">0:15</span><span><b data-i18n="ch.5">Repaired and closed</b><small data-i18n="ch.5s">Camera confirms the fix, case closed with evidence</small></span></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="alt" id="problem">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" data-i18n="pr.eb">The challenge</span>
+      <h2 data-i18n="pr.h2">Cities record everything. Almost nobody is watching.</h2>
+      <p class="lead" data-i18n="pr.p">Thousands of cameras, a handful of operators. Most civic problems still reach the corporation through complaints, often hours or days late.</p>
+    </div>
+    <div class="vs">
+      <div class="vs-card bad reveal">
+        <h3><span class="dot d-red" style="width:36px;height:36px;border-radius:10px;display:grid;place-items:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span data-i18n="pr.b.h">Today: reactive</span></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="pr.b.1">Problems found only after citizens complain</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="pr.b.2">Footage exists, but no one sees it in time</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="pr.b.3">No record of who acted, or when</span></li>
+        </ul>
+      </div>
+      <div class="vs-arrow" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="vs-card good reveal">
+        <h3><span class="dot d-green" style="width:36px;height:36px;border-radius:10px;display:grid;place-items:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></span><span data-i18n="pr.g.h">With AI Smart Ward: proactive</span></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="pr.g.1">Issues spotted automatically, often before complaints</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="pr.g.2">The right department is alerted immediately</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="pr.g.3">Every action logged with time and photo evidence</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="quote reveal" data-i18n="pr.q">“CCTV can see everything, but no person can watch every camera every moment.”</p>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" data-i18n="how.eb">How it works</span>
+      <h2 data-i18n="how.h2">Not just detection. <span class='grad'>Detection to closure.</span></h2>
+      <p class="lead" data-i18n="how.p">The real value of AI is not the alert, it is the action taken on it. Every step is recorded, so accountability is built in.</p>
+    </div>
+    <ol class="flow reveal" id="flow">
+      <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><small>01</small><h3 data-i18n="fw.1">Existing CCTV</h3><p data-i18n="fw.1s">Video from cameras the city already owns</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><small>02</small><h3 data-i18n="fw.2">AI analytics</h3><p data-i18n="fw.2s">Models scan every frame, 24×7</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><small>03</small><h3 data-i18n="fw.3">Incident created</h3><p data-i18n="fw.3s">Type, place, time, severity and snapshot</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><small>04</small><h3 data-i18n="fw.4">Department alerted</h3><p data-i18n="fw.4s">Routed to the team that owns the problem</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><small>05</small><h3 data-i18n="fw.5">Action and closure</h3><p data-i18n="fw.5s">Field team fixes it, the camera verifies, the case is closed</p></li>
     </ol>
-    <div class="callout reveal">
-      <span class="icon c-green" style="margin:0"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span>
-      <p><strong>No new cameras required.</strong> AI Smart Ward is a software layer over existing CCTV infrastructure, getting more value from investments the city has already made.</p>
+  </div>
+</section>
+
+<!-- ===== CAPABILITIES ===== -->
+<section class="alt" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="cap.eb">Capabilities</span>
+      <h2 data-i18n="cap.h2">See what AI Smart Ward detects</h2>
+      <p class="lead" data-i18n="cap.p">Each animation shows a real use case. Every detection is mapped to the department responsible for acting on it.</p>
+    </div>
+    <div class="bento">
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-pothole.mp4" poster="assets/clip-pothole.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.1">Potholes and road damage</h3><p data-i18n="c.1s">Finds potholes with severity and location, often before a citizen complains.</p><span class="dept" data-i18n="c.1d">Engineering</span></div></article>
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-garbage.mp4" poster="assets/clip-garbage.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.2">Garbage and illegal dumping</h3><p data-i18n="c.2s">Detects garbage build-up and dumping at vulnerable spots as it happens.</p><span class="dept" data-i18n="c.2d">Solid Waste Management</span></div></article>
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-water.mp4" poster="assets/clip-water.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.3">Water logging and leaks</h3><p data-i18n="c.3s">Flags water-logged roads and pipeline leaks early, cutting water loss and traffic trouble.</p><span class="dept" data-i18n="c.3d">Water Supply</span></div></article>
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-tree.mp4" poster="assets/clip-tree.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.4">Fallen trees</h3><p data-i18n="c.4s">High-priority alerts for trees blocking roads, vital during the monsoon.</p><span class="dept" data-i18n="c.4d">Garden / Tree Authority</span></div></article>
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-accident.mp4" poster="assets/clip-accident.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.5">Accidents and traffic</h3><p data-i18n="c.5s">Fast detection of accidents and abnormal traffic so help reaches sooner.</p><span class="dept" data-i18n="c.5d">Traffic / Police</span></div></article>
+      <article class="cap reveal"><div class="media"><video class="lazy-clip" data-src="assets/clip-loiter.mp4" poster="assets/clip-loiter.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="live">AI</span></div>
+        <div class="body"><h3 data-i18n="c.6">Public safety</h3><p data-i18n="c.6s">Loitering, restricted-area entry and crowd build-up, day and night.</p><span class="dept" data-i18n="c.6d">Control Room</span></div></article>
+    </div>
+    <div class="more reveal"><span data-i18n="cap.m1">+ Illegal parking</span><span data-i18n="cap.m2">+ Crowd build-up</span><span data-i18n="cap.m3">+ Custom use cases on request</span></div>
+  </div>
+</section>
+
+<!-- ===== BENEFITS ===== -->
+<section id="benefits">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" data-i18n="bn.eb">Why cities choose it</span>
+      <h2 data-i18n="bn.h2">Better services, without new infrastructure</h2>
+    </div>
+    <div class="ben">
+      <div class="b reveal"><div class="i d-green"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3 data-i18n="b.1">Early detection</h3><p data-i18n="b.1s">Problems are spotted as they happen, not after complaints pile up.</p></div>
+      <div class="b reveal"><div class="i d-blue"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div><h3 data-i18n="b.2">Faster response</h3><p data-i18n="b.2s">Alerts go straight to the right department, cutting delays between teams.</p></div>
+      <div class="b reveal"><div class="i d-orange"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3 data-i18n="b.3">Accountability</h3><p data-i18n="b.3s">Every incident has an owner, a timeline and proof of action.</p></div>
+      <div class="b reveal"><div class="i d-cyan"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></div><h3 data-i18n="b.4">Reuse existing CCTV</h3><p data-i18n="b.4s">Get far more value from cameras the city has already paid for.</p></div>
+      <div class="b reveal"><div class="i d-green"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3 data-i18n="b.5">Data-driven governance</h3><p data-i18n="b.5s">Ward-wise reports show hotspots, trends and department performance.</p></div>
+      <div class="b reveal"><div class="i d-red"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><h3 data-i18n="b.6">Citizen trust</h3><p data-i18n="b.6s">Visible, quicker fixes show citizens their city is listening.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CAPABILITIES -->
-<section id="capabilities" class="soft">
+<!-- ===== DASHBOARD ===== -->
+<section class="alt" id="dashboard">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Capabilities</span>
-      <h2>What AI Smart Ward can detect</h2>
-      <p class="lead">Each detection is mapped to the department responsible for acting on it.</p>
-    </div>
-    <div class="grid3">
-      <article class="card reveal"><div class="icon c-orange"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="8" ry="3.5"/><path d="M4 15V10M20 15V10M8 8l4-3 4 3"/></svg></div><h3>Potholes &amp; road damage</h3><p>Finds potholes and road obstructions with severity and location, often before a citizen complains.</p><div class="dept">Department: <b>Engineering</b></div></article>
-      <article class="card reveal"><div class="icon c-blue"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div><h3>Water leaks &amp; logging</h3><p>Flags pipeline leaks and water-logged roads early, cutting water loss and inconvenience.</p><div class="dept">Department: <b>Water Supply</b></div></article>
-      <article class="card reveal"><div class="icon c-green"><svg viewBox="0 0 24 24"><path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/></svg></div><h3>Fallen trees</h3><p>High-priority alerts for fallen or dangerous trees, vital during the monsoon and emergencies.</p><div class="dept">Department: <b>Garden / Tree Authority</b></div></article>
-      <article class="card reveal"><div class="icon c-navy"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div><h3>Garbage &amp; illegal dumping</h3><p>Detects garbage build-up and unauthorised dumping at vulnerable spots.</p><div class="dept">Department: <b>Solid Waste Management</b></div></article>
-      <article class="card reveal"><div class="icon c-red"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="7" rx="2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M6 9l2-4h8l2 4"/></svg></div><h3>Accidents &amp; traffic</h3><p>Fast detection of accidents, congestion and abnormal traffic events for quicker response.</p><div class="dept">Department: <b>Traffic / Police</b></div></article>
-      <article class="card reveal"><div class="icon c-blue"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Public safety</h3><p>Loitering, restricted-area movement, unusual activity and crowd anomalies.</p><div class="dept">Department: <b>Control Room</b></div></article>
-    </div>
-  </div>
-</section>
-
-<!-- DASHBOARD -->
-<section class="dark" id="dashboard">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Command Centre</span>
-      <h2>One dashboard for every ward</h2>
-      <p class="lead">Senior officials see open incidents, response times and department performance in real time, turning CCTV into data-driven governance.</p>
+      <span class="eyebrow" data-i18n="db.eb">Command Centre</span>
+      <h2 data-i18n="db.h2">One dashboard for every ward</h2>
+      <p class="lead" data-i18n="db.p">Senior officials see open incidents, response times and department performance in real time.</p>
     </div>
     <div class="dash reveal">
-      <div class="kpis">
-        <div class="kpi"><span>Cameras online</span><b>248</b></div>
-        <div class="kpi"><span>AI alerts today</span><b>37</b></div>
-        <div class="kpi"><span>Critical</span><b style="color:#FF8A94">4</b></div>
-        <div class="kpi"><span>Open</span><b>11</b></div>
-        <div class="kpi"><span>In progress</span><b style="color:#F5B565">9</b></div>
-        <div class="kpi"><span>Resolved</span><b style="color:#6FD98E">17</b></div>
-      </div>
-      <div class="dash-body">
-        <div class="map" aria-hidden="true">
-          <span class="map-label">WARD MAP VIEW</span>
-          <span class="pin h" style="left:22%;top:34%"></span><span class="pin m" style="left:48%;top:58%"></span>
-          <span class="pin h" style="left:70%;top:28%"></span><span class="pin l" style="left:60%;top:76%"></span>
-          <span class="pin m" style="left:34%;top:70%"></span><span class="pin l" style="left:82%;top:62%"></span>
+      <div class="dash-top"><span class="dots"><i></i><i></i><i></i></span><b data-i18n="db.t">AI Smart Ward · Command Centre</b><span>● LIVE</span></div>
+      <div class="dash-in">
+        <div class="kpis">
+          <div class="kpi"><span data-i18n="k.1">Cameras online</span><b class="count" data-to="248">248</b></div>
+          <div class="kpi"><span data-i18n="k.2">AI alerts today</span><b class="count" data-to="37">37</b></div>
+          <div class="kpi"><span data-i18n="k.3">Critical</span><b class="count" data-to="4" style="color:var(--red)">4</b></div>
+          <div class="kpi"><span data-i18n="k.4">Open</span><b class="count" data-to="11">11</b></div>
+          <div class="kpi"><span data-i18n="k.5">In progress</span><b class="count" data-to="9" style="color:var(--orange)">9</b></div>
+          <div class="kpi"><span data-i18n="k.6">Resolved</span><b class="count" data-to="17" style="color:var(--green)">17</b></div>
         </div>
-        <div class="inc">
-          <div class="alert"><span>Pothole · Sector 12</span><span class="tag high">HIGH</span></div>
-          <div class="alert"><span>Water leak · MG Road</span><span class="tag med">MEDIUM</span></div>
-          <div class="alert"><span>Fallen tree · Kalamboli</span><span class="tag high">HIGH</span></div>
-          <div class="alert"><span>Illegal parking · Old Panvel</span><span class="tag ok">LOW</span></div>
-          <div class="alert"><span>Garbage dumping · Market Rd</span><span class="tag med">MEDIUM</span></div>
+        <div class="dash-body">
+          <div class="map" aria-hidden="true">
+            <span class="map-label" data-i18n="db.map">WARD MAP</span>
+            <i class="road" style="left:0;right:0;top:46%;height:8px"></i><i class="road" style="top:0;bottom:0;left:38%;width:8px"></i><i class="road" style="top:0;bottom:0;left:72%;width:6px"></i>
+            <span class="pin h" style="left:24%;top:30%"></span><span class="pin m" style="left:48%;top:62%"></span>
+            <span class="pin h" style="left:70%;top:26%"></span><span class="pin l" style="left:60%;top:80%"></span>
+            <span class="pin m" style="left:32%;top:72%"></span><span class="pin l" style="left:85%;top:60%"></span>
+          </div>
+          <div class="inc">
+            <div class="row"><span data-i18n="r.1">Pothole · Sector 12</span><span class="tag h" data-i18n="t.h">HIGH</span></div>
+            <div class="row"><span data-i18n="r.2">Water logging · Station Rd</span><span class="tag m" data-i18n="t.m">MEDIUM</span></div>
+            <div class="row"><span data-i18n="r.3">Fallen tree · Sector 4</span><span class="tag h" data-i18n="t.h">HIGH</span></div>
+            <div class="row"><span data-i18n="r.4">Garbage dumping · Market Rd</span><span class="tag m" data-i18n="t.m">MEDIUM</span></div>
+            <div class="row"><span data-i18n="r.5">Illegal parking · Old Town</span><span class="tag l" data-i18n="t.l">LOW</span></div>
+          </div>
         </div>
+        <p class="disclaimer" data-i18n="db.d">Illustrative dashboard with sample data. Live dashboards are set up for each pilot.</p>
       </div>
-      <p class="disclaimer">Illustrative dashboard with sample data. Live dashboards are configured for each pilot.</p>
     </div>
   </div>
 </section>
 
-<!-- PILOT -->
+<!-- ===== PILOT ===== -->
 <section id="pilot">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Pilot approach</span>
-      <h2>Start small. Prove it. Then scale.</h2>
-      <p class="lead">No city-wide commitment upfront. The corporation decides at every stage, based on measured results.</p>
+      <span class="eyebrow" data-i18n="pl.eb">Pilot approach</span>
+      <h2 data-i18n="pl.h2">Start small. Prove it. Then scale.</h2>
+      <p class="lead" data-i18n="pl.p">No city-wide commitment upfront. The corporation decides at every stage, based on measured results.</p>
     </div>
-    <div class="phases">
-      <div class="phase reveal"><small>PHASE 1</small><h3>Pilot</h3><p>Deploy on selected cameras in chosen wards or locations.</p></div>
-      <div class="phase reveal"><small>PHASE 2</small><h3>Evaluate</h3><p>Measure detection accuracy and the response workflow with officials.</p></div>
-      <div class="phase reveal"><small>PHASE 3</small><h3>Expand</h3><p>Add use cases and locations, department by department.</p></div>
-      <div class="phase reveal"><small>PHASE 4</small><h3>City-wide</h3><p>Scale across the corporation once value is proven.</p></div>
-    </div>
-    <div class="why reveal">
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg><span><b>Reuse existing CCTV</b>Maximise current investment</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg><span><b>Incremental rollout</b>Deploy in manageable stages</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg><span><b>Department-wise</b>Expand one team at a time</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg><span><b>Full audit trail</b>Every incident logged</span></div>
+    <div class="road-map">
+      <div class="ph reveal"><span class="n">1</span><small data-i18n="ph.l1">PHASE 1</small><h3 data-i18n="ph.1">Pilot</h3><p data-i18n="ph.1s">Run on selected cameras in chosen wards or locations.</p><div class="bar"><i style="width:25%"></i></div></div>
+      <div class="ph reveal"><span class="n">2</span><small data-i18n="ph.l2">PHASE 2</small><h3 data-i18n="ph.2">Evaluate</h3><p data-i18n="ph.2s">Measure detection accuracy and response with your officials.</p><div class="bar"><i style="width:50%"></i></div></div>
+      <div class="ph reveal"><span class="n">3</span><small data-i18n="ph.l3">PHASE 3</small><h3 data-i18n="ph.3">Expand</h3><p data-i18n="ph.3s">Add more use cases and locations, department by department.</p><div class="bar"><i style="width:75%"></i></div></div>
+      <div class="ph reveal"><span class="n">4</span><small data-i18n="ph.l4">PHASE 4</small><h3 data-i18n="ph.4">City-wide</h3><p data-i18n="ph.4s">Scale across the corporation once value is proven.</p><div class="bar"><i style="width:100%"></i></div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTORS -->
-<section class="soft" id="sectors">
+<!-- ===== SECTORS & TRUST ===== -->
+<section class="alt" id="sectors">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Who we serve</span>
-      <h2>Built for public spaces that matter</h2>
+      <span class="eyebrow" data-i18n="sc.eb">Who we serve</span>
+      <h2 data-i18n="sc.h2">Built for public spaces, designed responsibly</h2>
     </div>
-    <div class="grid3">
-      <article class="card reveal"><div class="icon c-navy"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div><h3>Municipal corporations</h3><p>Ward-level monitoring of roads, water, sanitation, trees and traffic, connected to department workflows.</p></article>
-      <article class="card reveal"><div class="icon c-green"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 10v9M15 10v9M3 21h18"/></svg></div><h3>Government departments</h3><p>AI video analytics for transport, public safety and facility monitoring under smart-governance programmes.</p></article>
-      <article class="card reveal"><div class="icon c-blue"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></div><h3>Campuses &amp; institutions</h3><p>Safety monitoring for colleges, schools and health facilities: restricted areas, after-hours movement and crowding.</p></article>
-    </div>
-    <div class="privacy reveal">
-      <span class="icon c-green"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
-      <div>
-        <h3>Privacy-first, responsible AI</h3>
-        <p>Facial recognition is optional and controlled, enabled only where applicable law, policy and the competent authority permit it. Our focus is civic events, not profiling citizens.</p>
-      </div>
+    <div class="two">
+      <div class="sec-card reveal"><span class="i d-blue"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span><div><h3 data-i18n="sc.1">Municipal corporations</h3><p data-i18n="sc.1s">Ward-level monitoring of roads, water, sanitation, trees and traffic, connected to department workflows.</p></div></div>
+      <div class="sec-card reveal"><span class="i d-green"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 10v9M15 10v9M3 21h18"/></svg></span><div><h3 data-i18n="sc.2">Government departments</h3><p data-i18n="sc.2s">Video analytics for transport, public safety and facilities under smart-governance programmes.</p></div></div>
+      <div class="sec-card reveal"><span class="i d-orange"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span><div><h3 data-i18n="sc.3">Campuses and institutions</h3><p data-i18n="sc.3s">Safety monitoring for colleges, schools and hospitals: restricted areas, after-hours movement and crowding.</p></div></div>
+      <div class="sec-card reveal"><span class="i d-cyan"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div><h3 data-i18n="sc.4">Privacy-first by design</h3><p data-i18n="sc.4s">We focus on civic events, not on profiling people. Facial recognition is off by default, used only where law and the competent authority permit.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ===== ABOUT ===== -->
 <section id="about">
-  <div class="wrap split">
-    <div class="about-logo reveal">
-      <img src="assets/logo-full.png" alt="Swami Intelligent Systems — AI Smart Governance" width="300" height="315">
-    </div>
+  <div class="wrap about">
+    <div class="about-logo reveal"><img src="assets/logo-full.png" alt="Swami Intelligent Systems — AI Smart Governance" width="300" height="315"></div>
     <div class="reveal">
-      <span class="eyebrow">About us</span>
-      <h2 style="margin:12px 0 14px">Swami Intelligent Systems</h2>
-      <p class="lead">An AI and computer vision company from Navi Mumbai, focused on smart governance, intelligent surveillance and digital transformation. We help cities and institutions get more value from the camera infrastructure they already own.</p>
+      <span class="eyebrow" data-i18n="ab.eb">About us</span>
+      <h2 style="margin:16px 0 14px">Swami Intelligent Systems</h2>
+      <p class="lead" data-i18n="ab.p">An AI and computer vision company from Navi Mumbai, focused on smart governance, intelligent surveillance and digital transformation. We help cities and institutions get more out of the cameras they already own.</p>
       <div class="facts">
-        <div class="fact"><span>Founder &amp; Director</span><b>Mrs. Swapna Amit Ghorpade</b></div>
-        <div class="fact"><span>Registration</span><b>MSME · UDYAM-MH-27-0265371</b></div>
-        <div class="fact"><span>Headquarters</span><b>Kharghar, Navi Mumbai</b></div>
-        <div class="fact"><span>Deployment partner</span><b>VC Tech</b></div>
+        <div class="fact"><span data-i18n="ab.f1">Founder &amp; Director</span><b data-i18n="ab.f1v">Mrs. Swapna Amit Ghorpade</b></div>
+        <div class="fact"><span data-i18n="ab.f2">MSME Udyam registration</span><b>UDYAM-MH-27-0265371</b></div>
+        <div class="fact"><span data-i18n="ab.f3">Headquarters</span><b data-i18n="ab.f3v">Kharghar, Navi Mumbai</b></div>
+        <div class="fact"><span data-i18n="ab.f4">Deployment partner</span><b>VC Tech</b></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="soft" id="faq">
+<!-- ===== FAQ ===== -->
+<section class="alt" id="faq">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2>Common questions</h2>
+      <span class="eyebrow" data-i18n="fq.eb">FAQ</span>
+      <h2 data-i18n="fq.h2">Common questions</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>Do we need to buy new cameras?</summary><p>No. AI Smart Ward works on the CCTV cameras you already have. It adds an AI analytics layer and an incident-management dashboard on top of existing video feeds.</p></details>
-      <details><summary>Will it work alongside our current CCTV or Safe City vendor?</summary><p>Yes. It is designed to complement existing systems, focusing on civic use cases such as roads, water, sanitation and trees. Integration details are agreed during pilot scoping.</p></details>
-      <details><summary>What does a pilot involve?</summary><p>We select a small set of cameras and use cases with your team, run the system on those feeds, and review detection accuracy and response workflow together. You decide on expansion only after seeing the results.</p></details>
-      <details><summary>How is citizen privacy protected?</summary><p>The system focuses on civic events, not individuals. Facial recognition is off by default and is enabled only where law, policy and the competent authority permit it.</p></details>
-      <details><summary>Who handles installation and on-ground support?</summary><p>Deployment and CCTV integration are delivered with VC Tech, our technology deployment partner, while Swami Intelligent Systems manages the AI solution and the project.</p></details>
+      <details><summary data-i18n="q.1">Do we need to buy new cameras?</summary><p data-i18n="a.1">No. AI Smart Ward works on the CCTV cameras you already have. It adds an AI layer and an incident dashboard on top of existing video feeds.</p></details>
+      <details><summary data-i18n="q.2">Will it work with our current CCTV or Safe City vendor?</summary><p data-i18n="a.2">Yes. It is designed to complement existing systems, focusing on civic use cases such as roads, water, sanitation and trees. Integration details are agreed during pilot planning.</p></details>
+      <details><summary data-i18n="q.3">What does a pilot involve?</summary><p data-i18n="a.3">We pick a small set of cameras and use cases with your team, run the system on those feeds, and review accuracy and response together. You decide on expansion only after seeing results.</p></details>
+      <details><summary data-i18n="q.4">How is citizen privacy protected?</summary><p data-i18n="a.4">The system looks for civic events, not individuals. Facial recognition is off by default and enabled only where law, policy and the competent authority permit it.</p></details>
+      <details><summary data-i18n="q.5">Who handles installation and support?</summary><p data-i18n="a.5">Deployment and CCTV integration are delivered with VC Tech, our technology deployment partner. Swami Intelligent Systems manages the AI solution and the project.</p></details>
+      <details><summary data-i18n="q.6">Is the demo video real footage?</summary><p data-i18n="a.6">The video on this page is an illustrative animation of the workflow. We are happy to arrange a live demonstration on your own cameras.</p></details>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="wrap">
-    <div class="cta-band reveal">
-      <div style="position:relative;z-index:1">
-        <span class="eyebrow">Next step</span>
-        <h2>See it working on your own cameras</h2>
-        <p class="lead">We run a pilot demonstration on selected CCTV cameras so your team can judge the results first-hand, before any larger decision.</p>
+    <div class="cta reveal">
+      <div>
+        <span class="eyebrow" data-i18n="ct.eb">Next step</span>
+        <h2 data-i18n="ct.h2">See it working on your own cameras</h2>
+        <p class="lead" data-i18n="ct.p">We run a demonstration on selected CCTV cameras so your team can judge the results first-hand, before any larger decision.</p>
       </div>
-      <div class="contact-list">
-        <a href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20a%20demo%20of%20AI%20Smart%20Ward." target="_blank" rel="noopener">
-          <span class="icon" style="color:#25D366"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z"/></svg></span>
-          <span><small>WhatsApp</small><strong>Chat with us</strong></span></a>
-        <a href="tel:+919833028028">
-          <span class="icon" style="color:var(--navy)"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
-          <span><small>Phone</small><strong>+91 98330 28028</strong></span></a>
-        <a href="mailto:info@swamiai.in?subject=AI%20Smart%20Ward%20demo%20request">
-          <span class="icon" style="color:var(--blue)"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <span><small>Email</small><strong>info@swamiai.in</strong></span></a>
+      <div class="contact">
+        <a href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20a%20demo%20of%20AI%20Smart%20Ward." target="_blank" rel="noopener"><span class="i" style="color:#25D366"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z"/></svg></span><span><small>WhatsApp</small><strong data-i18n="ct.wa">Chat with us</strong></span></a>
+        <a href="tel:+919833028028"><span class="i" style="color:#1B2A6B"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small data-i18n="ct.ph">Phone</small><strong>+91 98330 28028</strong></span></a>
+        <a href="mailto:info@swamiai.in?subject=AI%20Smart%20Ward%20demo%20request"><span class="i" style="color:#3B82F6"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><small data-i18n="ct.em">Email</small><strong>info@swamiai.in</strong></span></a>
       </div>
     </div>
   </div>
@@ -634,33 +749,96 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line)}
   <div class="wrap">
     <div class="foot">
       <div class="foot-brand">
-        <img src="assets/logo-mark.png" alt="" width="60" height="63" loading="lazy">
-        <div><b style="color:var(--navy)">Swami Intelligent Systems</b><p>AI Smart Ward — Intelligent Cities. Safer Tomorrow.</p><p style="margin-top:6px">Kharghar, Navi Mumbai, Maharashtra</p></div>
+        <span class="logo-badge"><img src="assets/logo-mark.png" alt="" width="54" height="57" loading="lazy"></span>
+        <div><b style="color:var(--head)">Swami Intelligent Systems</b><p data-i18n="ft.s">AI Smart Ward — Intelligent Cities. Safer Tomorrow.</p><p style="margin-top:6px" data-i18n="ft.a">Kharghar, Navi Mumbai, Maharashtra</p></div>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="#solution">How it works</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#pilot">Pilot approach</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="tel:+919833028028">+91 98330 28028</a></li><li><a href="mailto:info@swamiai.in">info@swamiai.in</a></li><li><a href="https://wa.me/919833028028" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div><h4 data-i18n="ft.ex">Explore</h4><ul><li><a href="#demo" data-i18n="nav.demo">Demo</a></li><li><a href="#capabilities" data-i18n="nav.cap">Capabilities</a></li><li><a href="#pilot" data-i18n="nav.pilot">Pilot</a></li><li><a href="#faq" data-i18n="nav.faq">FAQ</a></li></ul></div>
+      <div><h4 data-i18n="nav.contact">Contact</h4><ul><li><a href="tel:+919833028028">+91 98330 28028</a></li><li><a href="mailto:info@swamiai.in">info@swamiai.in</a></li><li><a href="https://wa.me/919833028028" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
     </div>
-    <div class="copy"><span>© <span id="yr">2026</span> Swami Intelligent Systems. All rights reserved.</span><span>Udyam: UDYAM-MH-27-0265371</span></div>
+    <div class="copy"><span>© <span id="yr">2026</span> Swami Intelligent Systems. <span data-i18n="ft.r">All rights reserved.</span></span><span>Udyam: UDYAM-MH-27-0265371</span></div>
   </div>
 </footer>
 
+<button class="top-btn" id="topBtn" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <a class="wa" href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20AI%20Smart%20Ward." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.1-.3-.2-.7-.4z"/></svg>
 </a>
 
+<script src="i18n.js"></script>
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-var btn=document.getElementById('menuBtn'),drawer=document.getElementById('drawer'),hdr=document.querySelector('header');
-function setMenu(open){btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu');drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
+(function(){
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var root=document.documentElement;
+function store(k,v){try{v===undefined?0:localStorage.setItem(k,v);return localStorage.getItem(k)}catch(e){return null}}
+$('#yr').textContent=new Date().getFullYear();
+
+/* marquee duplicate for seamless loop */
+var tr=$('#track');tr.innerHTML+=tr.innerHTML;
+
+/* theme */
+function setTheme(t){root.setAttribute('data-theme',t);store('swami-theme',t);var m=$$('meta[name="theme-color"]');m.forEach(function(x){x.setAttribute('content',t==='dark'?'#070B1A':'#F7F9FC')})}
+$('#themeBtn').addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+
+/* language */
+var EN={};$$('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(!(k in EN))EN[k]=el.innerHTML});
+var LBL={en:'EN',mr:'मरा',hi:'हिं'};
+function setLang(l){
+  if(!window.I18N||(!I18N[l]&&l!=='en'))l='en';
+  var dict=l==='en'?EN:I18N[l];
+  $$('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(dict[k]!=null)el.innerHTML=dict[k];else if(EN[k]!=null)el.innerHTML=EN[k]});
+  root.setAttribute('lang',l);$('#langLbl').textContent=LBL[l];
+  $$('.lang-menu button').forEach(function(b){b.setAttribute('aria-checked',b.getAttribute('data-lang')===l)});
+  store('swami-lang',l);
+}
+var lang=$('#lang'),lb=$('#langBtn');
+lb.addEventListener('click',function(e){e.stopPropagation();var o=lang.classList.toggle('open');lb.setAttribute('aria-expanded',o)});
+$$('.lang-menu button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));lang.classList.remove('open');lb.setAttribute('aria-expanded','false')})});
+document.addEventListener('click',function(){lang.classList.remove('open');lb.setAttribute('aria-expanded','false')});
+var q=(location.search.match(/[?&]lang=(en|mr|hi)/)||[])[1];
+setLang(q||store('swami-lang')||'en');
+
+/* mobile menu */
+var btn=$('#menuBtn'),drawer=$('#drawer'),hdr=$('header');
+function setMenu(o){btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');drawer.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
 btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true')});
-drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-window.addEventListener('resize',function(){if(window.innerWidth>980)setMenu(false)});
-window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>8)},{passive:true});
-if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
+$$('a',drawer).forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){setMenu(false);lang.classList.remove('open')}});
+window.addEventListener('resize',function(){if(innerWidth>1060)setMenu(false)});
+
+/* scroll state */
+var top=$('#topBtn');
+window.addEventListener('scroll',function(){var y=scrollY;hdr.classList.toggle('scrolled',y>8);top.classList.toggle('show',y>900)},{passive:true});
+top.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!('IntersectionObserver' in window)){$$('.reveal').forEach(function(e){e.classList.add('in')});return}
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+$$('.reveal').forEach(function(el){io.observe(el)});
+
+/* lazy looping clips: load + play only while visible */
+var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+  if(e.isIntersecting){if(!v.src){v.src=v.getAttribute('data-src')}if(!reduce){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
+  else if(!v.paused){v.pause()}})},{threshold:.25});
+$$('.lazy-clip').forEach(function(v){vo.observe(v);if(reduce){v.setAttribute('controls','')}});
+
+/* demo video chapters */
+var dv=$('#demoVid'),chs=$$('#chapters button');
+chs.forEach(function(b){b.addEventListener('click',function(){dv.currentTime=parseFloat(b.getAttribute('data-t'));var p=dv.play();if(p&&p.catch)p.catch(function(){})})});
+dv.addEventListener('timeupdate',function(){var t=dv.currentTime,a=0;chs.forEach(function(b,i){if(t>=parseFloat(b.getAttribute('data-t'))-.05)a=i});chs.forEach(function(b,i){b.classList.toggle('active',i===a)})});
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!reduce&&dv.paused&&dv.currentTime===0){var p=dv.play();if(p&&p.catch)p.catch(function(){})}})},{threshold:.5}).observe(dv);
+
+/* how-it-works stepper animation */
+var flow=$('#flow'),steps=$$('li',flow),si=0,timer;
+function step(){steps.forEach(function(s,i){s.classList.toggle('on',i<=si)});flow.style.setProperty('--p',si/(steps.length-1));si=(si+1)%steps.length}
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer){step();if(!reduce)timer=setInterval(step,1400);else{si=steps.length-1;step()}}})},{threshold:.3}).observe(flow);
+
+/* counters */
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var el=e.target,to=+el.getAttribute('data-to');if(reduce||to===0){el.textContent=to;return}
+  var t0=null;function f(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1200);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)})},{threshold:.5});
+$$('.count').forEach(function(c){co.observe(c)});
+})();
 </script>
 </body>
 </html>
