@@ -117,7 +117,7 @@ header.scrolled{border-color:var(--line)}
 .drawer{display:none}
 
 /* ===== Hero ===== */
-.hero{padding:clamp(36px,6vw,84px) 0 clamp(48px,6vw,80px);overflow:hidden}
+.hero{padding:clamp(36px,6vw,84px) 0 clamp(48px,6vw,80px);overflow:hidden;overflow:clip}
 .aurora{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;filter:blur(70px);opacity:.55}
 [data-theme="light"] .aurora{opacity:.35}
 .aurora i{position:absolute;border-radius:50%;animation:float 16s ease-in-out infinite}
@@ -319,7 +319,7 @@ html[lang="mr"] .ph small,html[lang="hi"] .ph small{font-family:var(--font)}
 .faq details p{padding:0 22px 20px;color:var(--muted)}
 
 /* ===== Contact ===== */
-.cta{position:relative;border-radius:30px;padding:clamp(28px,5vw,64px);overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,48px);align-items:center;background:linear-gradient(135deg,#0E1A4D,#13246A 55%,#0F4C6E);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.cta{position:relative;border-radius:30px;padding:clamp(28px,5vw,64px);overflow:hidden;overflow:clip;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,48px);align-items:center;background:linear-gradient(135deg,#0E1A4D,#13246A 55%,#0F4C6E);color:#fff;border:1px solid rgba(255,255,255,.1)}
 .cta::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-120px;top:-160px;background:radial-gradient(rgba(34,197,94,.45),transparent 70%)}
 .cta::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;left:-140px;bottom:-200px;background:radial-gradient(rgba(34,211,238,.35),transparent 70%)}
 .cta>*{position:relative;z-index:1}
@@ -333,6 +333,35 @@ html[lang="mr"] .ph small,html[lang="hi"] .ph small{font-family:var(--font)}
 .contact .i svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .contact small{display:block;color:#AFBCDB;font-size:.76rem}
 .contact strong{font-weight:700;word-break:break-word}
+
+
+/* ===== Lead form ===== */
+.cta{align-items:start}
+.lead-form{background:var(--solid);color:var(--text);border-radius:22px;padding:clamp(20px,3vw,30px);border:1px solid var(--line-2);box-shadow:0 30px 60px rgba(0,0,0,.25);display:grid;gap:12px}
+.lead-form h3{font-size:1.3rem;color:var(--head)}
+.fm-sub{color:var(--muted);font-size:.92rem;margin-top:-6px}
+.fg{display:grid;gap:12px}.fg.two-col{grid-template-columns:1fr 1fr}
+.lead-form label{display:grid;gap:6px;font-size:.84rem;font-weight:600;color:var(--head)}
+.lead-form label b{color:var(--red);font-weight:700;display:inline}
+.lead-form .lt{display:block}
+.fm-ok[hidden]{display:none}
+.lead-form input,.lead-form select,.lead-form textarea{width:100%;min-height:46px;padding:10px 12px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);font:inherit;font-size:16px;font-weight:500;transition:border-color .2s,box-shadow .2s}
+.lead-form textarea{resize:vertical;min-height:84px}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(34,164,71,.15)}
+.lead-form .bad{border-color:var(--red)!important}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.consent{grid-template-columns:22px 1fr!important;align-items:start;font-weight:500!important;color:var(--muted)!important;font-size:.82rem!important;line-height:1.5}
+.consent input{width:20px;min-height:20px;height:20px;margin-top:2px;accent-color:var(--green)}
+.fm-err{color:var(--red);font-size:.88rem;font-weight:600}
+.fm-btn{width:100%}
+.fm-btn[disabled]{opacity:.7;cursor:wait;transform:none}
+.fm-ok{text-align:center;display:grid;gap:10px;justify-items:center;padding:12px 0}
+.fm-ok .ok-ic{width:60px;height:60px;border-radius:50%;background:rgba(34,164,71,.15);color:var(--green);display:grid;place-items:center}
+.fm-ok .ok-ic svg{width:30px;height:30px}
+.fm-ok p{color:var(--muted)}
+.btn-wa{background:#25D366;color:#fff;width:100%}
+.lead-form.done>*:not(.fm-ok){display:none}
+@media (max-width:640px){.fg.two-col{grid-template-columns:1fr}}
 
 /* ===== Footer ===== */
 footer{padding:56px 0 30px;border-top:1px solid var(--line);margin-top:clamp(48px,6vw,80px)}
@@ -764,12 +793,40 @@ footer{padding:56px 0 30px;border-top:1px solid var(--line);margin-top:clamp(48p
         <span class="eyebrow" data-i18n="ct.eb">Next step</span>
         <h2 data-i18n="ct.h2">See it working on your own cameras</h2>
         <p class="lead" data-i18n="ct.p">We run a demonstration on selected CCTV cameras so your team can judge the results first-hand, before any larger decision.</p>
+        <div class="contact" style="margin-top:24px">
+          <a href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20a%20demo%20of%20AI%20Smart%20Ward." target="_blank" rel="noopener"><span class="i" style="color:#25D366"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z"/></svg></span><span><small>WhatsApp</small><strong data-i18n="ct.wa">Chat with us</strong></span></a>
+          <a href="tel:+919833028028"><span class="i" style="color:#1B2A6B"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small data-i18n="ct.ph">Phone</small><strong>+91 98330 28028</strong></span></a>
+          <a href="mailto:info@swamiai.in?subject=AI%20Smart%20Ward%20demo%20request"><span class="i" style="color:#3B82F6"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><small data-i18n="ct.em">Email</small><strong>info@swamiai.in</strong></span></a>
+        </div>
       </div>
-      <div class="contact">
-        <a href="https://wa.me/919833028028?text=Hello%2C%20I%20would%20like%20a%20demo%20of%20AI%20Smart%20Ward." target="_blank" rel="noopener"><span class="i" style="color:#25D366"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z"/></svg></span><span><small>WhatsApp</small><strong data-i18n="ct.wa">Chat with us</strong></span></a>
-        <a href="tel:+919833028028"><span class="i" style="color:#1B2A6B"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small data-i18n="ct.ph">Phone</small><strong>+91 98330 28028</strong></span></a>
-        <a href="mailto:info@swamiai.in?subject=AI%20Smart%20Ward%20demo%20request"><span class="i" style="color:#3B82F6"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><small data-i18n="ct.em">Email</small><strong>info@swamiai.in</strong></span></a>
-      </div>
+      <form class="lead-form" id="leadForm" novalidate>
+        <h3 data-i18n="fm.h">Request a free demo</h3>
+        <p class="fm-sub" data-i18n="fm.sub">Share a few details and we will get back to you within one working day.</p>
+        <div class="fg two-col">
+          <label><span class="lt"><span data-i18n="fm.name">Your name</span> <b>*</b></span><input name="name" autocomplete="name" required minlength="2" maxlength="100"></label>
+          <label><span class="lt"><span data-i18n="fm.phone">Mobile number</span> <b>*</b></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="15" placeholder="98XXXXXXXX"></label>
+        </div>
+        <div class="fg two-col">
+          <label><span class="lt"><span data-i18n="fm.org">Organisation</span> <b>*</b></span><input name="organisation" autocomplete="organization" required maxlength="150"></label>
+          <label><span class="lt"><span data-i18n="fm.desig">Designation</span></span><input name="designation" autocomplete="organization-title" maxlength="100"></label>
+        </div>
+        <div class="fg two-col">
+          <label><span class="lt"><span data-i18n="fm.sector">Sector</span> <b>*</b></span><select name="sector" required><option value="" data-i18n="fm.choose">Choose…</option><option value="Municipal" data-i18n="se.1.s">Municipal</option><option value="Schools & colleges" data-i18n="se.2.s">Schools & colleges</option><option value="Hospitals" data-i18n="se.3.s">Hospitals</option><option value="Traffic & transport" data-i18n="se.4.s">Traffic & transport</option><option value="Retail & banks" data-i18n="se.5.s">Retail & banks</option><option value="Industry & sites" data-i18n="se.6.s">Industry & sites</option><option value="Temples & events" data-i18n="se.7.s">Temples & events</option><option value="Housing societies" data-i18n="se.8.s">Housing societies</option><option value="Panchayats" data-i18n="se.9.s">Panchayats</option><option value="Forests & rivers" data-i18n="se.10.s">Forests & rivers</option><option value="Other" data-i18n="fm.other">Other</option></select></label>
+          <label><span class="lt"><span data-i18n="fm.city">City / town</span> <b>*</b></span><input name="city" autocomplete="address-level2" required maxlength="80"></label>
+        </div>
+        <div class="fg"><label><span class="lt"><span data-i18n="fm.email">Email</span></span><input name="email" type="email" autocomplete="email" maxlength="150"></label></div>
+        <div class="fg"><label><span class="lt"><span data-i18n="fm.msg">What would you like to monitor?</span></span><textarea name="message" rows="3" maxlength="1000"></textarea></label></div>
+        <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" name="consent" required><span data-i18n="fm.consent">I agree that Swami Intelligent Systems may store these details and contact me about my enquiry. We never share your details with anyone else.</span></label>
+        <p class="fm-err" id="fmErr" role="alert" hidden></p>
+        <button class="btn btn-primary fm-btn" type="submit"><span data-i18n="fm.send">Send request</span></button>
+        <div class="fm-ok" id="fmOk" hidden>
+          <span class="ok-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <h3 data-i18n="fm.okh">Thank you! Request received.</h3>
+          <p data-i18n="fm.okp">For the fastest reply, also send your request on WhatsApp.</p>
+          <a class="btn btn-wa" id="fmWa" href="#" target="_blank" rel="noopener"><span data-i18n="fm.wa">Send on WhatsApp</span></a>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -845,6 +902,44 @@ top.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
 var tabs=$$('.stabs [role="tab"]');
 function selTab(t,focus){tabs.forEach(function(b){var on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on});if(focus)t.focus();if(innerWidth<=1060)t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}
 tabs.forEach(function(t,i){t.addEventListener('click',function(){selTab(t)});t.addEventListener('keydown',function(e){var k=e.key,n=null;if(k==='ArrowDown'||k==='ArrowRight')n=tabs[(i+1)%tabs.length];if(k==='ArrowUp'||k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(k==='Home')n=tabs[0];if(k==='End')n=tabs[tabs.length-1];if(n){e.preventDefault();selTab(n,true)}})});
+
+
+/* ===== Lead form =====
+   SB_URL / SB_KEY: Supabase project URL and its public "anon" key (safe to publish:
+   the database only allows inserting new enquiries, never reading them). Leave empty
+   to send enquiries via WhatsApp only. */
+var SB_URL='', SB_KEY='';
+var WA_NUM='919833028028';
+var form=$('#leadForm'),err=$('#fmErr'),sendBtn=$('.fm-btn',form);
+function t(k,en){var l=root.getAttribute('lang');return (l!=='en'&&window.I18N&&I18N[l]&&I18N[l][k])||en}
+function showErr(m){err.textContent=m;err.hidden=false}
+function waText(d){return 'New AI Smart Ward demo request%0A'+
+  ['Name: '+d.name,'Organisation: '+d.organisation+(d.designation?' ('+d.designation+')':''),'Sector: '+d.sector,'City: '+d.city,'Phone: '+d.phone,(d.email?'Email: '+d.email:''),(d.message?'Message: '+d.message:'')]
+  .filter(Boolean).map(encodeURIComponent).join('%0A')}
+form.addEventListener('submit',function(e){
+  e.preventDefault();err.hidden=true;
+  var f=form.elements,d={};['name','phone','organisation','designation','sector','city','email','message'].forEach(function(k){d[k]=(f[k].value||'').trim()});
+  if(f.website.value)return; /* spam bot */
+  $$('.bad',form).forEach(function(x){x.classList.remove('bad')});
+  var bad=[];
+  if(d.name.length<2)bad.push('name');
+  d.phone=d.phone.replace(/[\s-]/g,'');if(!/^(\+?91)?[6-9]\d{9}$/.test(d.phone))bad.push('phone');
+  if(!d.organisation)bad.push('organisation');if(!d.sector)bad.push('sector');if(!d.city)bad.push('city');
+  if(d.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email))bad.push('email');
+  if(bad.length){bad.forEach(function(k){f[k].classList.add('bad')});f[bad[0]].focus();
+    showErr(bad.length===1&&bad[0]==='phone'?t('fm.e.phone','Please enter a valid 10-digit Indian mobile number.'):t('fm.e.req','Please fill in the highlighted fields.'));return}
+  if(!f.consent.checked){showErr(t('fm.e.consent','Please tick the consent box so we can contact you.'));f.consent.focus();return}
+  var wa='https://wa.me/'+WA_NUM+'?text='+waText(d);
+  $('#fmWa').href=wa;
+  function done(){form.classList.add('done');$('#fmOk').hidden=false;$('#fmOk').scrollIntoView({block:'center',behavior:'smooth'})}
+  if(!SB_URL||!SB_KEY){window.open(wa,'_blank','noopener');done();return}
+  sendBtn.disabled=true;
+  var row={name:d.name,phone:d.phone,organisation:d.organisation,designation:d.designation||null,sector:d.sector,city:d.city,
+    email:d.email||null,message:d.message||null,lang:root.getAttribute('lang'),consent:true,page:location.href.slice(0,300)};
+  fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
+    .then(function(r){if(!r.ok)throw new Error(r.status);done()})
+    .catch(function(){sendBtn.disabled=false;showErr(t('fm.e.net','Could not send right now. Please use the WhatsApp button instead.'));window.open(wa,'_blank','noopener')});
+});
 
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!('IntersectionObserver' in window)){$$('.reveal').forEach(function(e){e.classList.add('in')});return}
