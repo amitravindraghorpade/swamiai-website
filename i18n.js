@@ -1,6 +1,7 @@
 /* Marathi and Hindi translations. English is read from the page itself. */
 window.I18N = {
 mr: {
+"ft.res":"माहिती","ft.blog":"लेख (इंग्रजी)",
 "skip":"मुख्य मजकुराकडे जा",
 "tagline":"AI स्मार्ट गव्हर्नन्स",
 "nav.demo":"डेमो","nav.how":"कार्यपद्धती","nav.cap":"क्षमता","nav.pilot":"पायलट","nav.about":"आमच्याबद्दल","nav.faq":"प्रश्नोत्तरे","nav.ben":"फायदे","nav.contact":"संपर्क",
@@ -57,6 +58,7 @@ mr: {
 "ft.s":"AI स्मार्ट वॉर्ड — बुद्धिमान शहरे. सुरक्षित उद्या.","ft.a":"खारघर, नवी मुंबई, महाराष्ट्र","ft.ex":"अधिक जाणून घ्या","ft.r":"सर्व हक्क राखीव."
 },
 hi: {
+"ft.res":"जानकारी","ft.blog":"लेख (अंग्रेज़ी)",
 "skip":"मुख्य सामग्री पर जाएँ",
 "tagline":"AI स्मार्ट गवर्नेंस",
 "nav.demo":"डेमो","nav.how":"कैसे काम करता है","nav.cap":"क्षमताएँ","nav.pilot":"पायलट","nav.about":"हमारे बारे में","nav.faq":"सवाल-जवाब","nav.ben":"फायदे","nav.contact":"संपर्क",
