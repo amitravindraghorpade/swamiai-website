@@ -2,7 +2,7 @@
 // Uses CallMeBot's free WhatsApp API (https://www.callmebot.com/blog/free-api-whatsapp-messages/).
 //
 // Secrets to set in Supabase → Edge Functions → Secrets (never put them in the website code):
-//   CALLMEBOT_PHONE   your WhatsApp number with country code, e.g. 919833028028
+//   CALLMEBOT_PHONE   your WhatsApp number with country code, e.g. 918169778263
 //   CALLMEBOT_APIKEY  the key CallMeBot sends you on WhatsApp
 //   WEBHOOK_SECRET    any long random text; the same text goes in the database webhook header
 

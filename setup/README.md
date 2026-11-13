@@ -4,7 +4,7 @@
 
 The form on swamiai.in works in two modes:
 
-* **Now (no Supabase yet):** after a visitor fills the form, WhatsApp opens with their details ready to send to +91 98330 28028.
+* **Now (no Supabase yet):** after a visitor fills the form, WhatsApp opens with their details ready to send to +91 81697 78263.
 * **With Supabase:** every enquiry is also saved in your database, and (optionally) you get an automatic WhatsApp alert.
 
 ## 1. Create the table (5 minutes)
@@ -25,7 +25,7 @@ Supabase → **Table Editor → leads**. Change the `status` column as you follo
 1. Open https://www.callmebot.com/blog/free-api-whatsapp-messages/ and follow its steps: save CallMeBot's WhatsApp number shown there and send it the activation message. It replies with your API key.
 2. Supabase → **Edge Functions → Deploy a new function → Via Editor**, name it `notify-lead`, paste `setup/notify-lead/index.ts`, deploy. Turn **off** "Verify JWT" for this function.
 3. **Edge Functions → Secrets**, add:
-   * `CALLMEBOT_PHONE` = `919833028028`
+   * `CALLMEBOT_PHONE` = `918169778263`
    * `CALLMEBOT_APIKEY` = the key CallMeBot sent you
    * `WEBHOOK_SECRET` = any long random text you make up
 4. **Database → Webhooks → Create a new hook**: table `leads`, event **Insert**, type **Supabase Edge Functions**, function `notify-lead`, add HTTP header `x-webhook-secret` = the same random text.
