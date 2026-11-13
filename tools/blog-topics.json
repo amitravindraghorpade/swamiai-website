@@ -1,0 +1,17 @@
+{
+ "note": "Topic backlog for the fortnightly article task. Each run takes the first topic whose slug has no folder under /blog/ and no open pull request. Add, remove or reorder freely.",
+ "topics": [
+  {"slug":"pothole-detection-cctv","en":"Pothole detection using CCTV: how cities can find road damage early","mr_slug":"cctv-dware-khadde-olakh","mr":"CCTV द्वारे खड्डे ओळख: रस्त्यांचे नुकसान लवकर कसे शोधावे","audience":"municipal engineering departments"},
+  {"slug":"school-campus-safety-ai-cameras","en":"Campus safety with AI cameras: a guide for schools and colleges","mr_slug":"shala-suraksha-ai-camera","mr":"शाळा आणि महाविद्यालयांची सुरक्षा: AI कॅमेरे कसे मदत करतात","audience":"school principals, college managements, education boards"},
+  {"slug":"crowd-safety-temples-festivals-ai","en":"Crowd safety at temples and festivals with AI video analytics","mr_slug":"mandir-utsav-gardi-vyavasthapan-ai","mr":"मंदिरे आणि उत्सवांतील गर्दी व्यवस्थापन: AI ची मदत","audience":"temple trusts, Ganeshotsav mandals, event organisers, police"},
+  {"slug":"water-logging-monitoring-monsoon","en":"Monsoon readiness: monitoring water logging with existing CCTV","mr_slug":"pavsali-pani-sachne-dekharekh","mr":"पावसाळ्यात पाणी साचण्यावर CCTV ने देखरेख","audience":"municipal disaster management cells"},
+  {"slug":"hospital-safety-ai-video-analytics","en":"Hospital safety with AI video analytics: queues, staff safety and restricted areas","mr_slug":"rugnalay-suraksha-ai","mr":"रुग्णालय सुरक्षा: रांगा, कर्मचारी सुरक्षा आणि प्रतिबंधित क्षेत्रे","audience":"hospital administrators, civic health departments"},
+  {"slug":"housing-society-security-ai-cctv","en":"Smarter housing society security with AI on your existing CCTV","mr_slug":"housing-society-suraksha-ai","mr":"गृहनिर्माण संस्थांची सुरक्षा: सध्याच्या CCTV वर AI","audience":"housing society committees and chairmen"},
+  {"slug":"ppe-compliance-construction-sites","en":"PPE compliance on construction sites and factories using AI cameras","mr_slug":"bandhkam-kamgar-suraksha-ppe","mr":"बांधकाम आणि कारखान्यांत कामगार सुरक्षा: हेल्मेट व सेफ्टी व्हेस्ट तपासणी","audience":"builders, factory safety officers"},
+  {"slug":"start-ai-pilot-municipal-corporation","en":"How a municipal corporation can start an AI video analytics pilot","mr_slug":"mahanagarpalika-ai-pilot-kasa-suru-karava","mr":"महानगरपालिकेने AI पायलट प्रकल्प कसा सुरू करावा","audience":"municipal commissioners, IT departments"},
+  {"slug":"atm-retail-security-ai","en":"ATM and retail shop security with AI: intrusion, tampering and footfall","mr_slug":"atm-dukan-suraksha-ai","mr":"ATM आणि दुकानांची सुरक्षा: AI कसे काम करते","audience":"bank branch managers, jewellery and retail shop owners"},
+  {"slug":"gram-panchayat-smart-village-cctv","en":"Smart villages: how gram panchayats can use CCTV and AI","mr_slug":"gram-panchayat-smart-gaon-cctv","mr":"स्मार्ट गाव: ग्रामपंचायती CCTV आणि AI चा वापर कसा करू शकतात","audience":"sarpanch, gram sevaks, taluka officials"},
+  {"slug":"illegal-sand-mining-detection","en":"Detecting illegal sand mining and tree cutting with cameras and AI","mr_slug":"avaidh-valu-upsa-olakh","mr":"अवैध वाळू उपसा आणि वृक्षतोड ओळखणे: कॅमेरे आणि AI","audience":"revenue department, forest department"},
+  {"slug":"ai-cctv-privacy-public-spaces","en":"AI CCTV and privacy: what civic video analytics does and does not do","mr_slug":"ai-cctv-ani-khajgipana","mr":"AI CCTV आणि नागरिकांचा खासगीपणा: काय होते आणि काय नाही","audience":"officials, elected representatives, citizens"}
+ ]
+}
