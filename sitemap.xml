@@ -24,4 +24,20 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://swamiai.in/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://swamiai.in/"/>
   </url>
+  <url>
+    <loc>https://swamiai.in/blog/</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://swamiai.in/blog/ai-garbage-detection-municipal-corporations/</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://swamiai.in/mr/blog/</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://swamiai.in/mr/blog/ai-smart-ward-mhanje-kay/</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
 </urlset>
