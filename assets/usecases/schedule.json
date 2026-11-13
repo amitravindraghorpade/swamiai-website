@@ -1,0 +1,216 @@
+{
+ "start_monday": "2026-11-16",
+ "per_week": 4,
+ "cards": [
+  {
+   "n": 1,
+   "file": "swami-usecase-01.jpg",
+   "sector": "Municipal corporations",
+   "title": "Pothole detection",
+   "caption": "Pothole detection — Spotted on camera and sent to the engineering team, often before anyone complains. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 2,
+   "file": "swami-usecase-02.jpg",
+   "sector": "Municipal corporations",
+   "title": "Garbage dumping alerts",
+   "caption": "Garbage dumping alerts — Catches illegal dumping at garbage spots as it happens. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 3,
+   "file": "swami-usecase-03.jpg",
+   "sector": "Municipal corporations",
+   "title": "Water logging monitoring",
+   "caption": "Water logging monitoring — Flags flooded roads and underpasses during heavy rain. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 4,
+   "file": "swami-usecase-04.jpg",
+   "sector": "Municipal corporations",
+   "title": "Fallen tree alerts",
+   "caption": "Fallen tree alerts — Blocked roads reported instantly to the garden department. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 5,
+   "file": "swami-usecase-05.jpg",
+   "sector": "Municipal corporations",
+   "title": "Footpath encroachment",
+   "caption": "Footpath encroachment — Hawkers and illegal structures on footpaths, logged with photos. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 6,
+   "file": "swami-usecase-06.jpg",
+   "sector": "Municipal corporations",
+   "title": "Open manholes & broken streetlights",
+   "caption": "Open manholes & broken streetlights — Dangerous civic faults found before they cause accidents. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 7,
+   "file": "swami-usecase-07.jpg",
+   "sector": "Municipal corporations",
+   "title": "Garbage burning detection",
+   "caption": "Garbage burning detection — Smoke from open burning detected and reported with location. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SmartCity #SwachhBharat #NaviMumbai #AI #CCTV"
+  },
+  {
+   "n": 8,
+   "file": "swami-usecase-08.jpg",
+   "sector": "Schools & colleges",
+   "title": "Campus gate security",
+   "caption": "Campus gate security — Unauthorised entry at gates and boundary walls. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SchoolSafety #CampusSecurity #AI #CCTV"
+  },
+  {
+   "n": 9,
+   "file": "swami-usecase-09.jpg",
+   "sector": "Schools & colleges",
+   "title": "Strangers near the campus",
+   "caption": "Strangers near the campus — Unknown adults loitering near school gates during school hours. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SchoolSafety #CampusSecurity #AI #CCTV"
+  },
+  {
+   "n": 10,
+   "file": "swami-usecase-10.jpg",
+   "sector": "Schools & colleges",
+   "title": "School bus bay safety",
+   "caption": "School bus bay safety — Alerts when children move too close to moving buses. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SchoolSafety #CampusSecurity #AI #CCTV"
+  },
+  {
+   "n": 11,
+   "file": "swami-usecase-11.jpg",
+   "sector": "Schools & colleges",
+   "title": "Exam hall monitoring",
+   "caption": "Exam hall monitoring — Unusual movement and phone use flagged for invigilators. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #SchoolSafety #CampusSecurity #AI #CCTV"
+  },
+  {
+   "n": 12,
+   "file": "swami-usecase-12.jpg",
+   "sector": "Hospitals",
+   "title": "OPD queue & crowding",
+   "caption": "OPD queue & crowding — Long queues and overcrowding in OPD and casualty, in real time. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HospitalSafety #Healthcare #AI #CCTV"
+  },
+  {
+   "n": 13,
+   "file": "swami-usecase-13.jpg",
+   "sector": "Hospitals",
+   "title": "Staff safety in hospitals",
+   "caption": "Staff safety in hospitals — Early alerts on aggression against doctors and staff. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HospitalSafety #Healthcare #AI #CCTV"
+  },
+  {
+   "n": 14,
+   "file": "swami-usecase-14.jpg",
+   "sector": "Hospitals",
+   "title": "ICU & pharmacy access control",
+   "caption": "ICU & pharmacy access control — Entry into restricted areas such as ICU, NICU and drug store. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HospitalSafety #Healthcare #AI #CCTV"
+  },
+  {
+   "n": 15,
+   "file": "swami-usecase-15.jpg",
+   "sector": "Hospitals",
+   "title": "Patient fall detection",
+   "caption": "Patient fall detection — A fall in a ward or corridor alerts nursing staff at once. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HospitalSafety #Healthcare #AI #CCTV"
+  },
+  {
+   "n": 16,
+   "file": "swami-usecase-16.jpg",
+   "sector": "Traffic & transport",
+   "title": "No helmet & triple riding",
+   "caption": "No helmet & triple riding — Traffic violations detected from existing junction cameras. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RoadSafety #SmartTraffic #AI #CCTV"
+  },
+  {
+   "n": 17,
+   "file": "swami-usecase-17.jpg",
+   "sector": "Traffic & transport",
+   "title": "Wrong-way driving",
+   "caption": "Wrong-way driving — Vehicles against traffic flagged before they cause accidents. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RoadSafety #SmartTraffic #AI #CCTV"
+  },
+  {
+   "n": 18,
+   "file": "swami-usecase-18.jpg",
+   "sector": "Traffic & transport",
+   "title": "Railway platform safety",
+   "caption": "Railway platform safety — People on tracks or too close to the platform edge. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RoadSafety #SmartTraffic #AI #CCTV"
+  },
+  {
+   "n": 19,
+   "file": "swami-usecase-19.jpg",
+   "sector": "Retail, banks & ATMs",
+   "title": "After-hours shop intrusion",
+   "caption": "After-hours shop intrusion — Movement inside a closed shop or showroom triggers an alert. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RetailSecurity #ATMSecurity #AI #CCTV"
+  },
+  {
+   "n": 20,
+   "file": "swami-usecase-20.jpg",
+   "sector": "Retail, banks & ATMs",
+   "title": "ATM tampering & masked faces",
+   "caption": "ATM tampering & masked faces — Tampering or a helmet/mask-covered face at the ATM. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RetailSecurity #ATMSecurity #AI #CCTV"
+  },
+  {
+   "n": 21,
+   "file": "swami-usecase-21.jpg",
+   "sector": "Retail, banks & ATMs",
+   "title": "Footfall & queue analytics",
+   "caption": "Footfall & queue analytics — Count visitors and measure queue length at counters. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #RetailSecurity #ATMSecurity #AI #CCTV"
+  },
+  {
+   "n": 22,
+   "file": "swami-usecase-22.jpg",
+   "sector": "Industry & construction",
+   "title": "PPE compliance",
+   "caption": "PPE compliance — Workers without helmets or safety vests are flagged on site. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #WorkplaceSafety #Industry #AI #CCTV"
+  },
+  {
+   "n": 23,
+   "file": "swami-usecase-23.jpg",
+   "sector": "Industry & construction",
+   "title": "Fire & smoke detection",
+   "caption": "Fire & smoke detection — Early warning from the cameras already watching the floor. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #WorkplaceSafety #Industry #AI #CCTV"
+  },
+  {
+   "n": 24,
+   "file": "swami-usecase-24.jpg",
+   "sector": "Industry & construction",
+   "title": "Restricted machine zones",
+   "caption": "Restricted machine zones — Entry into danger zones around heavy machinery. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #WorkplaceSafety #Industry #AI #CCTV"
+  },
+  {
+   "n": 25,
+   "file": "swami-usecase-25.jpg",
+   "sector": "Temples & events",
+   "title": "Crowd density & stampede risk",
+   "caption": "Crowd density & stampede risk — Warns organisers when crowd density becomes unsafe. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #CrowdSafety #Events #AI #CCTV"
+  },
+  {
+   "n": 26,
+   "file": "swami-usecase-26.jpg",
+   "sector": "Temples & events",
+   "title": "Unattended bags",
+   "caption": "Unattended bags — Bags or objects left alone at temples, events and stations. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #CrowdSafety #Events #AI #CCTV"
+  },
+  {
+   "n": 27,
+   "file": "swami-usecase-27.jpg",
+   "sector": "Housing societies",
+   "title": "Society gate & visitor log",
+   "caption": "Society gate & visitor log — Visitor entries and tailgating at the society gate. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HousingSociety #Security #AI #CCTV"
+  },
+  {
+   "n": 28,
+   "file": "swami-usecase-28.jpg",
+   "sector": "Housing societies",
+   "title": "Parking misuse",
+   "caption": "Parking misuse — Vehicles in wrong or reserved slots, logged automatically. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #HousingSociety #Security #AI #CCTV"
+  },
+  {
+   "n": 29,
+   "file": "swami-usecase-29.jpg",
+   "sector": "Gram panchayats",
+   "title": "Water tank overflow",
+   "caption": "Water tank overflow — Overflow and leakage at village water tanks. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #GramPanchayat #RuralIndia #AI #CCTV"
+  },
+  {
+   "n": 30,
+   "file": "swami-usecase-30.jpg",
+   "sector": "Forests & rivers",
+   "title": "Illegal sand mining",
+   "caption": "Illegal sand mining — Sand-mining trucks at riverbanks, day and night. AI Smart Ward works on your existing CCTV cameras, no new cameras needed. Book a free demo: swamiai.in #ProtectNature #Environment #AI #CCTV"
+  }
+ ]
+}
