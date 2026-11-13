@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /setup/
+Disallow: /tools/
+
+Sitemap: https://swamiai.in/sitemap.xml

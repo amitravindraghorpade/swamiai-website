@@ -7,12 +7,19 @@
 if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t);})();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Swami Intelligent Systems | AI Smart Ward</title>
-<meta name="description" content="AI Smart Ward turns a city's existing CCTV cameras into civic intelligence: it detects potholes, garbage dumping, water logging, fallen trees and accidents, and tracks every incident from alert to closure.">
+<title>AI CCTV Analytics for Smart Cities | Swami Intelligent Systems</title>
+<meta name="description" content="AI video analytics on your existing CCTV: detects potholes, garbage dumping, water logging, fallen trees and accidents, and tracks each incident to closure. Kharghar, Navi Mumbai.">
 <link rel="canonical" href="https://swamiai.in/">
+<link rel="alternate" hreflang="en" href="https://swamiai.in/">
+<link rel="alternate" hreflang="mr" href="https://swamiai.in/mr/">
+<link rel="alternate" hreflang="hi" href="https://swamiai.in/hi/">
+<link rel="alternate" hreflang="x-default" href="https://swamiai.in/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#070B1A" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F7F9FC" media="(prefers-color-scheme: light)">
-<meta property="og:title" content="Swami Intelligent Systems | AI Smart Ward">
+<meta property="og:site_name" content="Swami Intelligent Systems">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="AI CCTV Analytics for Smart Cities | Swami Intelligent Systems">
 <meta property="og:description" content="From CCTV cameras to civic intelligence. AI video analytics for smart governance, built on the cameras cities already own.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://swamiai.in/">
@@ -24,7 +31,10 @@ if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Swami Intelligent Systems","url":"https://swamiai.in/","logo":"https://swamiai.in/assets/logo-mark.png","email":"info@swamiai.in","telephone":"+91-98330-28028","address":{"@type":"PostalAddress","addressLocality":"Kharghar, Navi Mumbai","addressRegion":"Maharashtra","addressCountry":"IN"},"slogan":"AI Smart Ward — Intelligent Cities. Safer Tomorrow."}
+{"@context": "https://schema.org", "@type": "Organization", "@id": "https://swamiai.in/#org", "name": "Swami Intelligent Systems", "alternateName": "SWAMI AI", "url": "https://swamiai.in/", "logo": "https://swamiai.in/assets/logo-mark.png", "image": "https://swamiai.in/assets/og-image.jpg", "description": "AI and computer vision company from Navi Mumbai. AI Smart Ward adds video analytics to existing CCTV cameras for municipal corporations, schools, hospitals, transport, industry and public events.", "email": "info@swamiai.in", "telephone": "+91-98330-28028", "founder": {"@type": "Person", "name": "Swapna Amit Ghorpade"}, "identifier": {"@type": "PropertyValue", "propertyID": "Udyam Registration", "value": "UDYAM-MH-27-0265371"}, "address": {"@type": "PostalAddress", "addressLocality": "Kharghar, Navi Mumbai", "addressRegion": "Maharashtra", "postalCode": "410210", "addressCountry": "IN"}, "areaServed": {"@type": "State", "name": "Maharashtra"}, "knowsAbout": ["AI video analytics", "Computer vision", "CCTV analytics", "Smart city", "Smart governance", "Solid waste management monitoring", "Pothole detection"], "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "telephone": "+91-98330-28028", "email": "info@swamiai.in", "availableLanguage": ["English", "Marathi", "Hindi"]}, "slogan": "AI Smart Ward — Intelligent Cities. Safer Tomorrow."}
+</script>
+<script type="application/ld+json" id="ld-faq">
+{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "Do we need to buy new cameras?", "acceptedAnswer": {"@type": "Answer", "text": "No. AI Smart Ward works on the CCTV cameras you already have. It adds an AI layer and an incident dashboard on top of existing video feeds."}}, {"@type": "Question", "name": "Will it work with our current CCTV or Safe City vendor?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is designed to complement existing systems, focusing on civic use cases such as roads, water, sanitation and trees. Integration details are agreed during pilot planning."}}, {"@type": "Question", "name": "What does a pilot involve?", "acceptedAnswer": {"@type": "Answer", "text": "We pick a small set of cameras and use cases with your team, run the system on those feeds, and review accuracy and response together. You decide on expansion only after seeing results."}}, {"@type": "Question", "name": "How is citizen privacy protected?", "acceptedAnswer": {"@type": "Answer", "text": "The system looks for civic events, not individuals. Facial recognition is off by default and enabled only where law, policy and the competent authority permit it."}}, {"@type": "Question", "name": "Who handles installation and support?", "acceptedAnswer": {"@type": "Answer", "text": "Deployment and CCTV integration are delivered with VC Tech, our technology deployment partner. Swami Intelligent Systems manages the AI solution and the project."}}, {"@type": "Question", "name": "Is the demo video real footage?", "acceptedAnswer": {"@type": "Answer", "text": "The video on this page is an illustrative animation of the workflow. We are happy to arrange a live demonstration on your own cameras."}}, {"@type": "Question", "name": "Can it be used outside municipal corporations?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The same platform serves schools, hospitals, transport, retail and banks, industries, temples and events, housing societies, panchayats and forest areas. See the sectors section above for what it detects in each."}}]}
 </script>
 <style>
 /* ===== Tokens ===== */
@@ -879,10 +889,15 @@ function setLang(l){
 }
 var lang=$('#lang'),lb=$('#langBtn');
 lb.addEventListener('click',function(e){e.stopPropagation();var o=lang.classList.toggle('open');lb.setAttribute('aria-expanded',o)});
-$$('.lang-menu button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));lang.classList.remove('open');lb.setAttribute('aria-expanded','false')})});
+$$('.lang-menu button').forEach(function(b){b.addEventListener('click',function(){goLang(b.getAttribute('data-lang'));lang.classList.remove('open');lb.setAttribute('aria-expanded','false')})});
 document.addEventListener('click',function(){lang.classList.remove('open');lb.setAttribute('aria-expanded','false')});
-var q=(location.search.match(/[?&]lang=(en|mr|hi)/)||[])[1];
-setLang(q||store('swami-lang')||'en');
+/* each language has its own page (/, /mr/, /hi/) so search engines can index all three */
+var PAGE=root.getAttribute('lang')||'en',URLS={en:'/',mr:'/mr/',hi:'/hi/'};
+function goLang(l){if(!URLS[l])return;store('swami-lang',l);if(l!==PAGE&&location.protocol!=='file:'){location.href=URLS[l]+location.hash}else setLang(l)}
+var q=(location.search.match(/[?&]lang=(en|mr|hi)/)||[])[1],pref=store('swami-lang');
+if(q&&q!==PAGE)goLang(q);
+else if(PAGE==='en'&&!q&&pref&&pref!=='en'&&URLS[pref]&&!/bot|crawl|spider/i.test(navigator.userAgent))location.replace(URLS[pref]+location.hash);
+else setLang(PAGE);
 
 /* mobile menu */
 var btn=$('#menuBtn'),drawer=$('#drawer'),hdr=$('header');
